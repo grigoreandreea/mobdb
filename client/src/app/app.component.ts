@@ -7,8 +7,7 @@ import {DefaultService} from "./swagger-generated";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'client';
-
+  title = 'Angular';
 
   constructor(private defaultService: DefaultService) { }
 
