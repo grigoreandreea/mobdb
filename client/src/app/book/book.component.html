@@ -1,14 +1,9 @@
 <ng-container>
-  <div class="content-header row">
-    <div class="content-header-left col-md-9 col-12 mb-2">
-      <div class="row breadcrumbs-top">
-        <div class="col-12 d-flex">
-          <h2 class="content-header-title float-left mb-0">Books</h2>
-        </div>
-      </div>
+  <div class="page-container">
+    <div class="">
+      <h1 class="first-title">Books</h1>
     </div>
-  </div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -40,4 +35,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  </div>
 </ng-container>

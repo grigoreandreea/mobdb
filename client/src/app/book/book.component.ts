@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
+export enum SUBCATEGORY {
+  LIRIC = 'Liric',
+  EPIC = 'Epic'
+}
+
 export interface Book {
   title: string;
   position: number;
-  subcategory: string;
+  subcategory: SUBCATEGORY;
   nrExemplare: number;
 }
 
 const ELEMENT_DATA: Book[] = [
-  {position: 1, title: 'Poezii', subcategory: 'Liric', nrExemplare: 4},
-  {position: 2, title: 'La Medeleni', subcategory: 'Epic', nrExemplare: 1},
+  {position: 1, title: 'Poezii', subcategory: SUBCATEGORY.LIRIC, nrExemplare: 4},
+  {position: 2, title: 'La Medeleni', subcategory: SUBCATEGORY.EPIC, nrExemplare: 1},
 ];
 
 @Component({
