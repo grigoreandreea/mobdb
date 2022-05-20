@@ -1,20 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {EditBookComponent} from "./edit-book/edit-book.component";
+import {CARTEITEM, DefaultService} from "../swagger-generated";
 
-export enum SUBCATEGORY {
-  LIRIC = 'Liric',
-  EPIC = 'Epic'
-}
-
-export interface Book {
-  title: string;
-  position: number;
-  subcategory: SUBCATEGORY;
-  nrExemplare: number;
-}
-
-const ELEMENT_DATA: Book[] = [
-  {position: 1, title: 'Poezii', subcategory: SUBCATEGORY.LIRIC, nrExemplare: 4},
-  {position: 2, title: 'La Medeleni', subcategory: SUBCATEGORY.EPIC, nrExemplare: 1},
+const ELEMENT_DATA: CARTEITEM[] = [
+  {codCarte: 1, titlu: 'Poezii', codSubcategorie: 1, nrExemplare: 4},
+  {codCarte: 2, titlu: 'La Medeleni', codSubcategorie: 2, nrExemplare: 1},
 ];
 
 @Component({
@@ -23,13 +14,38 @@ const ELEMENT_DATA: Book[] = [
   styleUrls: ['./book.component.scss']
 })
 export class BookComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'title', 'subcategory', 'nrExemplare'];
+  displayedColumns: string[] = ['position', 'title', 'subcategory', 'nrExemplare', 'actions'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(
+    private modalService: MatDialog,
+    private defaultService: DefaultService
+  ) { }
 
   ngOnInit(): void {
+    this.defaultService.carteGet().subscribe((response) => {
+      console.log(response);
+    });
+  }
 
+  public editBook(book: CARTEITEM) {
+    const modalRef = this.modalService.open(EditBookComponent);
+    modalRef.componentInstance.selectedBookDetails = book;
+    modalRef.afterClosed().subscribe((response) => {
+      console.log(' response: ', response);
+      if (response[0]) {
+        this.dataSource = this.dataSource.filter((bookItem) => {
+          if (bookItem.codCarte === response[1].codCarte) {
+            bookItem = response[1];
+          }
+          return bookItem;
+        });
+      }
+    });
+  }
+
+  public deleteBook(book: CARTEITEM | null) {
+    this.defaultService.carteIdDelete('' + book?.codCarte);
   }
 
 }
