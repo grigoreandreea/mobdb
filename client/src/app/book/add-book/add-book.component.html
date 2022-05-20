@@ -1,1 +1,47 @@
-<p>add-book works!</p>
+<h2 mat-dialog-title>Adauga carte</h2>
+<mat-dialog-content>
+  <div class="example-container">
+    <div class="form-container">
+      <form [formGroup]="addBookForm" (submit)="addBook()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Subcategorie
+          </mat-label>
+          <input matInput formControlName="codSubcategorie" required>
+          <mat-error *ngIf="addBookForm && addBookForm.controls
+          && addBookForm.controls['codSubcategorie'] && addBookForm.controls['codSubcategorie'].touched
+          && addBookForm.controls['codSubcategorie'].invalid && addBookForm.controls['codSubcategorie'].errors">
+            <span *ngIf="addBookForm.controls['codSubcategorie'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBookForm.controls['codSubcategorie'].errors['addBookForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Titlu
+          </mat-label>
+          <input matInput formControlName="titlu" required type="text">
+          <mat-error *ngIf="addBookForm && addBookForm.controls
+          && addBookForm.controls['titlu'] && addBookForm.controls['titlu'].touched
+          && addBookForm.controls['titlu'].invalid && addBookForm.controls['titlu'].errors">
+            <span *ngIf="addBookForm.controls['titlu'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBookForm.controls['titlu'].errors['addBookForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Numar exemplare
+          </mat-label>
+          <input matInput formControlName="nrExemplare" type="number">
+          <mat-error *ngIf="addBookForm && addBookForm.controls
+          && addBookForm.controls['nrExemplare'] && addBookForm.controls['nrExemplare'].touched
+          && addBookForm.controls['nrExemplare'].invalid && addBookForm.controls['nrExemplare'].errors">
+            <span *ngIf="addBookForm.controls['nrExemplare'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBookForm.controls['nrExemplare'].errors['addBookForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" color="primary"  type="submit">Save</button>
+</mat-dialog-actions>
