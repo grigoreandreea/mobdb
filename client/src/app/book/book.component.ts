@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {EditBookComponent} from "./edit-book/edit-book.component";
 import {CARTEITEM, DefaultService} from "../swagger-generated";
+import {AddBookComponent} from "./add-book/add-book.component";
 
 const ELEMENT_DATA: CARTEITEM[] = [
   {codCarte: 1, titlu: 'Poezii', codSubcategorie: 1, nrExemplare: 4},
@@ -28,11 +29,18 @@ export class BookComponent implements OnInit {
     });
   }
 
+  public addBook() {
+    const modalRef = this.modalService.open(AddBookComponent);
+    modalRef.afterClosed().subscribe((response) => {
+      console.log('add response: ', response);
+    });
+  }
+
   public editBook(book: CARTEITEM) {
     const modalRef = this.modalService.open(EditBookComponent);
     modalRef.componentInstance.selectedBookDetails = book;
     modalRef.afterClosed().subscribe((response) => {
-      console.log(' response: ', response);
+      console.log('edit response: ', response);
       if (response[0]) {
         this.dataSource = this.dataSource.filter((bookItem) => {
           if (bookItem.codCarte === response[1].codCarte) {
