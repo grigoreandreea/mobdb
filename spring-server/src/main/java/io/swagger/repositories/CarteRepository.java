@@ -1,29 +1,22 @@
 package io.swagger.repositories;
 
 
-import java.util.List;
-
-import io.swagger.configuration.LocalDateConverter;
 import io.swagger.model.CARTEITEM;
-import io.swagger.model.CARTEITEM;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.format.DateTimeFormatter;
 
-import javax.sql.DataSource;
-
-
+import java.util.List;
 
 @Repository
 public class CarteRepository {
 
-    //    @Autowired
-    private JdbcTemplate jdbcTemplate = new Config().getJdbcTemplate();
+    private JdbcTemplate jdbcTemplate;
+
+    @org.springframework.beans.factory.annotation.Autowired
+    public CarteRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public List<CARTEITEM> getCarti(){
         String sql = "SELECT * FROM carte";

@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "formata_din", description = "the formata_din API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface FormataDinApi {
 
     @ApiOperation(value = "", nickname = "formataDinBatchloadPost", notes = "Create new records on FORMATA_DIN", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface FormataDinApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> formataDinBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> formataDinBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "formataDinGet", notes = "Retrieve records from FORMATA_DIN", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface FormataDinApi {
     @RequestMapping(value = "/formata_din",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> formataDinGet();
+    ResponseEntity<Object> formataDinGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "formataDinIdDelete", notes = "Remove a record from FORMATA_DIN", response = FORMATADINITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface FormataDinApi {
     @RequestMapping(value = "/formata_din/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<FORMATADINITEM> formataDinIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<FORMATADINITEM> formataDinIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "formataDinIdGet", notes = "Retrieve a record from FORMATA_DIN", response = FORMATADINITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface FormataDinApi {
     @RequestMapping(value = "/formata_din/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<FORMATADINITEM> formataDinIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<FORMATADINITEM> formataDinIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "formataDinIdPut", notes = "Create or update a record on FORMATA_DIN", response = FORMATADINITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface FormataDinApi {
     @RequestMapping(value = "/formata_din/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<FORMATADINITEM> formataDinIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody FORMATADINITEM payload);
+    ResponseEntity<FORMATADINITEM> formataDinIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody FORMATADINITEM payload);
 
 
     @ApiOperation(value = "", nickname = "formataDinPost", notes = "Create a new record on FORMATA_DIN", response = FORMATADINITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface FormataDinApi {
     @RequestMapping(value = "/formata_din",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<FORMATADINITEM> formataDinPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody FORMATADINITEM payload);
+    ResponseEntity<FORMATADINITEM> formataDinPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody FORMATADINITEM payload);
 
 }

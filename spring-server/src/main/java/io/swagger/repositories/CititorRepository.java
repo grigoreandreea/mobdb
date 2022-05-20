@@ -1,20 +1,23 @@
 package io.swagger.repositories;
 
-
-import java.util.List;
-import io.swagger.configuration.LocalDateConverter;
 import io.swagger.model.CITITORITEM;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.format.DateTimeFormatter;
+
+import java.util.List;
 
 @Repository
 public class CititorRepository {
 
     //@Autowired
-    private JdbcTemplate jdbcTemplate = new Config().getJdbcTemplate();
+    private JdbcTemplate jdbcTemplate;
+
+    @org.springframework.beans.factory.annotation.Autowired
+    public CititorRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
 
     public List<CITITORITEM> getCititor(){
         String sql = "SELECT * FROM cititor";

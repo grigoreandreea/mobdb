@@ -25,17 +25,8 @@ import java.util.List;
 
 @Validated
 @Api(value = "autor", description = "the autor API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface AutorApi {
-
-    @ApiOperation(value = "", nickname = "autorBatchloadPost", notes = "Create new records on AUTOR", response = String.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "The status of the processed records.", response = String.class) })
-    @RequestMapping(value = "/autor/batchload",
-        produces = { "text/plain" }, 
-        consumes = { "text/csv" },
-        method = RequestMethod.POST)
-    ResponseEntity<String> autorBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "autorGet", notes = "Retrieve records from AUTOR", response = Object.class, tags={  })
@@ -44,43 +35,43 @@ public interface AutorApi {
     @RequestMapping(value = "/autor",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> autorGet();
+    ResponseEntity<Object> autorGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "autorIdDelete", notes = "Remove a record from AUTOR", response = AUTORITEM.class, tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 204, message = "Deleted result.", response = AUTORITEM.class) })
     @RequestMapping(value = "/autor/{id}",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         method = RequestMethod.DELETE)
-    ResponseEntity<AUTORITEM> autorIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<AUTORITEM> autorIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "autorIdGet", notes = "Retrieve a record from AUTOR", response = AUTORITEM.class, tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "The queried record.", response = AUTORITEM.class) })
     @RequestMapping(value = "/autor/{id}",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         method = RequestMethod.GET)
-    ResponseEntity<AUTORITEM> autorIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<AUTORITEM> autorIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "autorIdPut", notes = "Create or update a record on AUTOR", response = AUTORITEM.class, tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "The successfully updated record.", response = AUTORITEM.class),
         @ApiResponse(code = 201, message = "The successfully created record.", response = AUTORITEM.class) })
     @RequestMapping(value = "/autor/{id}",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         method = RequestMethod.PUT)
-    ResponseEntity<AUTORITEM> autorIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody AUTORITEM payload);
+    ResponseEntity<AUTORITEM> autorIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody AUTORITEM payload);
 
 
     @ApiOperation(value = "", nickname = "autorPost", notes = "Create a new record on AUTOR", response = AUTORITEM.class, tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 201, message = "The successfully created record.", response = AUTORITEM.class) })
     @RequestMapping(value = "/autor",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<AUTORITEM> autorPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody AUTORITEM payload);
+    ResponseEntity<AUTORITEM> autorPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody AUTORITEM payload);
 
 }

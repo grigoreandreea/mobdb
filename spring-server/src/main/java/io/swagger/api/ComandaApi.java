@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "comanda", description = "the comanda API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface ComandaApi {
 
     @ApiOperation(value = "", nickname = "comandaBatchloadPost", notes = "Create new records on COMANDA", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface ComandaApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> comandaBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> comandaBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "comandaGet", notes = "Retrieve records from COMANDA", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface ComandaApi {
     @RequestMapping(value = "/comanda",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> comandaGet();
+    ResponseEntity<Object> comandaGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "comandaIdDelete", notes = "Remove a record from COMANDA", response = COMANDAITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface ComandaApi {
     @RequestMapping(value = "/comanda/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<COMANDAITEM> comandaIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<COMANDAITEM> comandaIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "comandaIdGet", notes = "Retrieve a record from COMANDA", response = COMANDAITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface ComandaApi {
     @RequestMapping(value = "/comanda/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<COMANDAITEM> comandaIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<COMANDAITEM> comandaIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "comandaIdPut", notes = "Create or update a record on COMANDA", response = COMANDAITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface ComandaApi {
     @RequestMapping(value = "/comanda/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<COMANDAITEM> comandaIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody COMANDAITEM payload);
+    ResponseEntity<COMANDAITEM> comandaIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody COMANDAITEM payload);
 
 
     @ApiOperation(value = "", nickname = "comandaPost", notes = "Create a new record on COMANDA", response = COMANDAITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface ComandaApi {
     @RequestMapping(value = "/comanda",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<COMANDAITEM> comandaPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody COMANDAITEM payload);
+    ResponseEntity<COMANDAITEM> comandaPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody COMANDAITEM payload);
 
 }

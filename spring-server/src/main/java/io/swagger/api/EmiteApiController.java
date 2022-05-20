@@ -4,6 +4,7 @@ import io.swagger.model.AUTORITEM;
 import io.swagger.model.EMITEITEM;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
+import io.swagger.repositories.Config;
 import io.swagger.repositories.EmiteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,8 +43,12 @@ public class EmiteApiController implements EmiteApi {
     @org.springframework.beans.factory.annotation.Autowired
     io.swagger.repositories.EmiteRepository emiteRepository;
 
-    public ResponseEntity<String> emiteBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<String> emiteBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        emiteRepository = new EmiteRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("")) {
             try {
                 return new ResponseEntity<String>(objectMapper.readValue("", String.class), HttpStatus.NOT_IMPLEMENTED);
@@ -56,8 +61,12 @@ public class EmiteApiController implements EmiteApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Object> emiteGet() {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<Object> emiteGet(@PathVariable("db") String db) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        emiteRepository = new EmiteRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity(emiteRepository.getEmite(), HttpStatus.OK);
@@ -70,8 +79,12 @@ public class EmiteApiController implements EmiteApi {
         return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<EMITEITEM> emiteIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<EMITEITEM> emiteIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        emiteRepository = new EmiteRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity(emiteRepository.deleteEmite(id), HttpStatus.OK);
@@ -84,8 +97,12 @@ public class EmiteApiController implements EmiteApi {
         return new ResponseEntity<EMITEITEM>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<EMITEITEM> emiteIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<EMITEITEM> emiteIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        emiteRepository = new EmiteRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity(emiteRepository.getEmite(id), HttpStatus.OK);
@@ -98,8 +115,12 @@ public class EmiteApiController implements EmiteApi {
         return new ResponseEntity<EMITEITEM>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<EMITEITEM> emiteIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody EMITEITEM payload) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<EMITEITEM> emiteIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody EMITEITEM payload) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        emiteRepository = new EmiteRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity<EMITEITEM>(emiteRepository.updateEmite(id, payload), HttpStatus.OK);
@@ -112,8 +133,12 @@ public class EmiteApiController implements EmiteApi {
         return new ResponseEntity<EMITEITEM>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<EMITEITEM> emitePost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody EMITEITEM payload) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<EMITEITEM> emitePost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody EMITEITEM payload) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        emiteRepository = new EmiteRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity<EMITEITEM>(emiteRepository.addEmite(payload), HttpStatus.OK);

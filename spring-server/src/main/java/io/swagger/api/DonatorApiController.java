@@ -4,6 +4,7 @@ import io.swagger.model.AUTORITEM;
 import io.swagger.model.DONATORITEM;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
+import io.swagger.repositories.Config;
 import io.swagger.repositories.DonatorRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,8 +43,12 @@ public class DonatorApiController implements DonatorApi {
     @org.springframework.beans.factory.annotation.Autowired
     io.swagger.repositories.DonatorRepository donatorRepository;
 
-    public ResponseEntity<String> donatorBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<String> donatorBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        donatorRepository = new DonatorRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("")) {
             try {
                 return new ResponseEntity<String>(objectMapper.readValue("", String.class), HttpStatus.NOT_IMPLEMENTED);
@@ -56,8 +61,12 @@ public class DonatorApiController implements DonatorApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Object> donatorGet() {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<Object> donatorGet(@PathVariable("db") String db) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        donatorRepository = new DonatorRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity(donatorRepository.getDonator(), HttpStatus.OK);
@@ -70,8 +79,12 @@ public class DonatorApiController implements DonatorApi {
         return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<DONATORITEM> donatorIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<DONATORITEM> donatorIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        donatorRepository = new DonatorRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity(donatorRepository.deleteDonator(id), HttpStatus.OK);
@@ -84,8 +97,12 @@ public class DonatorApiController implements DonatorApi {
         return new ResponseEntity<DONATORITEM>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<DONATORITEM> donatorIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<DONATORITEM> donatorIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        donatorRepository = new DonatorRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity(donatorRepository.getDonator(id), HttpStatus.OK);
@@ -98,8 +115,12 @@ public class DonatorApiController implements DonatorApi {
         return new ResponseEntity<DONATORITEM>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<DONATORITEM> donatorIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody DONATORITEM payload) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<DONATORITEM> donatorIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody DONATORITEM payload) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        donatorRepository = new DonatorRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity<DONATORITEM>(donatorRepository.updateDonator(id, payload), HttpStatus.OK);
@@ -112,8 +133,12 @@ public class DonatorApiController implements DonatorApi {
         return new ResponseEntity<DONATORITEM>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<DONATORITEM> donatorPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody DONATORITEM payload) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<DONATORITEM> donatorPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody DONATORITEM payload) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        donatorRepository = new DonatorRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity<DONATORITEM>(donatorRepository.addDonator(payload), HttpStatus.OK);

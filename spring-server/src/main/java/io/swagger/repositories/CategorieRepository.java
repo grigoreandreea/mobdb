@@ -1,16 +1,22 @@
 package io.swagger.repositories;
 
-import java.util.List;
 import io.swagger.model.CATEGORIEITEM;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class CategorieRepository {
 
-    //@Autowired
-    private JdbcTemplate jdbcTemplate = new Config().getJdbcTemplate();
+    private JdbcTemplate jdbcTemplate;
+
+    @org.springframework.beans.factory.annotation.Autowired
+    public CategorieRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
 
     public List<CATEGORIEITEM> getCategorie(){
         String sql = "SELECT * FROM categorie";

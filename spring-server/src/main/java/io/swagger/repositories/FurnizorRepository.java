@@ -1,19 +1,21 @@
 package io.swagger.repositories;
 
-import java.util.List;
-import io.swagger.configuration.LocalDateConverter;
 import io.swagger.model.FURNIZORITEM;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.format.DateTimeFormatter;
+
+import java.util.List;
 
 @Repository
 public class FurnizorRepository {
 
-    //@Autowired
-    private JdbcTemplate jdbcTemplate = new Config().getJdbcTemplate();
+    private JdbcTemplate jdbcTemplate;
+
+    @org.springframework.beans.factory.annotation.Autowired
+    public FurnizorRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public List<FURNIZORITEM> getFurnizor(){
         String sql = "SELECT * FROM furnizor";

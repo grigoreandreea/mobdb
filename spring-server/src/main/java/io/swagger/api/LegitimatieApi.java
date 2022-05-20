@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "legitimatie", description = "the legitimatie API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface LegitimatieApi {
 
     @ApiOperation(value = "", nickname = "legitimatieBatchloadPost", notes = "Create new records on LEGITIMATIE", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface LegitimatieApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> legitimatieBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> legitimatieBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "legitimatieGet", notes = "Retrieve records from LEGITIMATIE", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface LegitimatieApi {
     @RequestMapping(value = "/legitimatie",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> legitimatieGet();
+    ResponseEntity<Object> legitimatieGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "legitimatieIdDelete", notes = "Remove a record from LEGITIMATIE", response = LEGITIMATIEITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface LegitimatieApi {
     @RequestMapping(value = "/legitimatie/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<LEGITIMATIEITEM> legitimatieIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<LEGITIMATIEITEM> legitimatieIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "legitimatieIdGet", notes = "Retrieve a record from LEGITIMATIE", response = LEGITIMATIEITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface LegitimatieApi {
     @RequestMapping(value = "/legitimatie/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<LEGITIMATIEITEM> legitimatieIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<LEGITIMATIEITEM> legitimatieIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "legitimatieIdPut", notes = "Create or update a record on LEGITIMATIE", response = LEGITIMATIEITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface LegitimatieApi {
     @RequestMapping(value = "/legitimatie/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<LEGITIMATIEITEM> legitimatieIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody LEGITIMATIEITEM payload);
+    ResponseEntity<LEGITIMATIEITEM> legitimatieIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody LEGITIMATIEITEM payload);
 
 
     @ApiOperation(value = "", nickname = "legitimatiePost", notes = "Create a new record on LEGITIMATIE", response = LEGITIMATIEITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface LegitimatieApi {
     @RequestMapping(value = "/legitimatie",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<LEGITIMATIEITEM> legitimatiePost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody LEGITIMATIEITEM payload);
+    ResponseEntity<LEGITIMATIEITEM> legitimatiePost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody LEGITIMATIEITEM payload);
 
 }

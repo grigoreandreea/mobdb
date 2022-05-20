@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "categorie", description = "the categorie API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface CategorieApi {
 
     @ApiOperation(value = "", nickname = "categorieBatchloadPost", notes = "Create new records on CATEGORIE", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface CategorieApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> categorieBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> categorieBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "categorieGet", notes = "Retrieve records from CATEGORIE", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface CategorieApi {
     @RequestMapping(value = "/categorie",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> categorieGet();
+    ResponseEntity<Object> categorieGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "categorieIdDelete", notes = "Remove a record from CATEGORIE", response = CATEGORIEITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface CategorieApi {
     @RequestMapping(value = "/categorie/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<CATEGORIEITEM> categorieIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<CATEGORIEITEM> categorieIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "categorieIdGet", notes = "Retrieve a record from CATEGORIE", response = CATEGORIEITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface CategorieApi {
     @RequestMapping(value = "/categorie/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<CATEGORIEITEM> categorieIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<CATEGORIEITEM> categorieIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "categorieIdPut", notes = "Create or update a record on CATEGORIE", response = CATEGORIEITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface CategorieApi {
     @RequestMapping(value = "/categorie/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<CATEGORIEITEM> categorieIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody CATEGORIEITEM payload);
+    ResponseEntity<CATEGORIEITEM> categorieIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody CATEGORIEITEM payload);
 
 
     @ApiOperation(value = "", nickname = "categoriePost", notes = "Create a new record on CATEGORIE", response = CATEGORIEITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface CategorieApi {
     @RequestMapping(value = "/categorie",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<CATEGORIEITEM> categoriePost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody CATEGORIEITEM payload);
+    ResponseEntity<CATEGORIEITEM> categoriePost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody CATEGORIEITEM payload);
 
 }

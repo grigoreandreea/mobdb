@@ -11,8 +11,13 @@ import java.util.List;
 @Repository
 public class DonatorRepository {
 
-    //@Autowired
-    private JdbcTemplate jdbcTemplate = new Config().getJdbcTemplate();
+    private JdbcTemplate jdbcTemplate;
+
+    @org.springframework.beans.factory.annotation.Autowired
+    public DonatorRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
 
     public List<DONATORITEM> getDonator(){
         String sql = "SELECT * FROM donator";

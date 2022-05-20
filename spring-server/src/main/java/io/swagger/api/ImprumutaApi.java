@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "imprumuta", description = "the imprumuta API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface ImprumutaApi {
 
     @ApiOperation(value = "", nickname = "imprumutaBatchloadPost", notes = "Create new records on IMPRUMUTA", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface ImprumutaApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> imprumutaBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> imprumutaBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "imprumutaGet", notes = "Retrieve records from IMPRUMUTA", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface ImprumutaApi {
     @RequestMapping(value = "/imprumuta",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> imprumutaGet();
+    ResponseEntity<Object> imprumutaGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "imprumutaIdDelete", notes = "Remove a record from IMPRUMUTA", response = IMPRUMUTAITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface ImprumutaApi {
     @RequestMapping(value = "/imprumuta/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<IMPRUMUTAITEM> imprumutaIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<IMPRUMUTAITEM> imprumutaIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "imprumutaIdGet", notes = "Retrieve a record from IMPRUMUTA", response = IMPRUMUTAITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface ImprumutaApi {
     @RequestMapping(value = "/imprumuta/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<IMPRUMUTAITEM> imprumutaIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<IMPRUMUTAITEM> imprumutaIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "imprumutaIdPut", notes = "Create or update a record on IMPRUMUTA", response = IMPRUMUTAITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface ImprumutaApi {
     @RequestMapping(value = "/imprumuta/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<IMPRUMUTAITEM> imprumutaIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody IMPRUMUTAITEM payload);
+    ResponseEntity<IMPRUMUTAITEM> imprumutaIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody IMPRUMUTAITEM payload);
 
 
     @ApiOperation(value = "", nickname = "imprumutaPost", notes = "Create a new record on IMPRUMUTA", response = IMPRUMUTAITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface ImprumutaApi {
     @RequestMapping(value = "/imprumuta",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<IMPRUMUTAITEM> imprumutaPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody IMPRUMUTAITEM payload);
+    ResponseEntity<IMPRUMUTAITEM> imprumutaPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody IMPRUMUTAITEM payload);
 
 }

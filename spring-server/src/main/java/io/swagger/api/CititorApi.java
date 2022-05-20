@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "cititor", description = "the cititor API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface CititorApi {
 
     @ApiOperation(value = "", nickname = "cititorBatchloadPost", notes = "Create new records on CITITOR", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface CititorApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> cititorBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> cititorBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "cititorGet", notes = "Retrieve records from CITITOR", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface CititorApi {
     @RequestMapping(value = "/cititor",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> cititorGet();
+    ResponseEntity<Object> cititorGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "cititorIdDelete", notes = "Remove a record from CITITOR", response = CITITORITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface CititorApi {
     @RequestMapping(value = "/cititor/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<CITITORITEM> cititorIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<CITITORITEM> cititorIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "cititorIdGet", notes = "Retrieve a record from CITITOR", response = CITITORITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface CititorApi {
     @RequestMapping(value = "/cititor/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<CITITORITEM> cititorIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<CITITORITEM> cititorIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "cititorIdPut", notes = "Create or update a record on CITITOR", response = CITITORITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface CititorApi {
     @RequestMapping(value = "/cititor/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<CITITORITEM> cititorIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody CITITORITEM payload);
+    ResponseEntity<CITITORITEM> cititorIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody CITITORITEM payload);
 
 
     @ApiOperation(value = "", nickname = "cititorPost", notes = "Create a new record on CITITOR", response = CITITORITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface CititorApi {
     @RequestMapping(value = "/cititor",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<CITITORITEM> cititorPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody CITITORITEM payload);
+    ResponseEntity<CITITORITEM> cititorPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody CITITORITEM payload);
 
 }

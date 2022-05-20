@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "emite", description = "the emite API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface EmiteApi {
 
     @ApiOperation(value = "", nickname = "emiteBatchloadPost", notes = "Create new records on EMITE", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface EmiteApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> emiteBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> emiteBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "emiteGet", notes = "Retrieve records from EMITE", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface EmiteApi {
     @RequestMapping(value = "/emite",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> emiteGet();
+    ResponseEntity<Object> emiteGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "emiteIdDelete", notes = "Remove a record from EMITE", response = EMITEITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface EmiteApi {
     @RequestMapping(value = "/emite/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<EMITEITEM> emiteIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<EMITEITEM> emiteIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "emiteIdGet", notes = "Retrieve a record from EMITE", response = EMITEITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface EmiteApi {
     @RequestMapping(value = "/emite/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<EMITEITEM> emiteIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<EMITEITEM> emiteIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "emiteIdPut", notes = "Create or update a record on EMITE", response = EMITEITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface EmiteApi {
     @RequestMapping(value = "/emite/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<EMITEITEM> emiteIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody EMITEITEM payload);
+    ResponseEntity<EMITEITEM> emiteIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody EMITEITEM payload);
 
 
     @ApiOperation(value = "", nickname = "emitePost", notes = "Create a new record on EMITE", response = EMITEITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface EmiteApi {
     @RequestMapping(value = "/emite",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<EMITEITEM> emitePost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody EMITEITEM payload);
+    ResponseEntity<EMITEITEM> emitePost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody EMITEITEM payload);
 
 }

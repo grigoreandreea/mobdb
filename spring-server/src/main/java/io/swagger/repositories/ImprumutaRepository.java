@@ -1,21 +1,23 @@
 package io.swagger.repositories;
 
 
-import io.swagger.configuration.LocalDateConverter;
 import io.swagger.model.IMPRUMUTAITEM;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.List;
 
 @Repository
 public class ImprumutaRepository {
 
-    //@Autowired
-    private JdbcTemplate jdbcTemplate = new Config().getJdbcTemplate();
+    private JdbcTemplate jdbcTemplate;
+
+    @org.springframework.beans.factory.annotation.Autowired
+    public ImprumutaRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
 
     public List<IMPRUMUTAITEM> getImprumuta(){
         String sql = "SELECT * FROM imprumuta";

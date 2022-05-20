@@ -25,18 +25,8 @@ import java.util.List;
 
 @Validated
 @Api(value = "bibliotecar", description = "the bibliotecar API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface BibliotecarApi {
-
-    @ApiOperation(value = "", nickname = "bibliotecarBatchloadPost", notes = "Create new records on BIBLIOTECAR", response = String.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "The status of the processed records.", response = String.class) })
-    @RequestMapping(value = "/bibliotecar/batchload",
-        produces = { "text/plain" }, 
-        consumes = { "text/csv" },
-        method = RequestMethod.POST)
-    ResponseEntity<String> bibliotecarBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
-
 
     @ApiOperation(value = "", nickname = "bibliotecarGet", notes = "Retrieve records from BIBLIOTECAR", response = Object.class, tags={  })
     @ApiResponses(value = { 
@@ -44,7 +34,7 @@ public interface BibliotecarApi {
     @RequestMapping(value = "/bibliotecar",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> bibliotecarGet();
+    ResponseEntity<Object> bibliotecarGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "bibliotecarIdDelete", notes = "Remove a record from BIBLIOTECAR", response = BIBLIOTECARITEM.class, tags={  })
@@ -53,7 +43,7 @@ public interface BibliotecarApi {
     @RequestMapping(value = "/bibliotecar/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<BIBLIOTECARITEM> bibliotecarIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<BIBLIOTECARITEM> bibliotecarIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "bibliotecarIdGet", notes = "Retrieve a record from BIBLIOTECAR", response = BIBLIOTECARITEM.class, tags={  })
@@ -62,7 +52,7 @@ public interface BibliotecarApi {
     @RequestMapping(value = "/bibliotecar/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<BIBLIOTECARITEM> bibliotecarIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<BIBLIOTECARITEM> bibliotecarIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "bibliotecarIdPut", notes = "Create or update a record on BIBLIOTECAR", response = BIBLIOTECARITEM.class, tags={  })
@@ -72,7 +62,7 @@ public interface BibliotecarApi {
     @RequestMapping(value = "/bibliotecar/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<BIBLIOTECARITEM> bibliotecarIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody BIBLIOTECARITEM payload);
+    ResponseEntity<BIBLIOTECARITEM> bibliotecarIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody BIBLIOTECARITEM payload);
 
 
     @ApiOperation(value = "", nickname = "bibliotecarPost", notes = "Create a new record on BIBLIOTECAR", response = BIBLIOTECARITEM.class, tags={  })
@@ -81,6 +71,6 @@ public interface BibliotecarApi {
     @RequestMapping(value = "/bibliotecar",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<BIBLIOTECARITEM> bibliotecarPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody BIBLIOTECARITEM payload);
+    ResponseEntity<BIBLIOTECARITEM> bibliotecarPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody BIBLIOTECARITEM payload);
 
 }

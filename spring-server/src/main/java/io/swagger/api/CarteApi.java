@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "carte", description = "the carte API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface CarteApi {
 
     @ApiOperation(value = "", nickname = "carteBatchloadPost", notes = "Create new records on CARTE", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface CarteApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> carteBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> carteBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "carteGet", notes = "Retrieve records from CARTE", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface CarteApi {
     @RequestMapping(value = "/carte",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> carteGet();
+    ResponseEntity<Object> carteGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "carteIdDelete", notes = "Remove a record from CARTE", response = CARTEITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface CarteApi {
     @RequestMapping(value = "/carte/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<CARTEITEM> carteIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<CARTEITEM> carteIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "carteIdGet", notes = "Retrieve a record from CARTE", response = CARTEITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface CarteApi {
     @RequestMapping(value = "/carte/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<CARTEITEM> carteIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<CARTEITEM> carteIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "carteIdPut", notes = "Create or update a record on CARTE", response = CARTEITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface CarteApi {
     @RequestMapping(value = "/carte/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<CARTEITEM> carteIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody CARTEITEM payload);
+    ResponseEntity<CARTEITEM> carteIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody CARTEITEM payload);
 
 
     @ApiOperation(value = "", nickname = "cartePost", notes = "Create a new record on CARTE", response = CARTEITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface CarteApi {
     @RequestMapping(value = "/carte",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<CARTEITEM> cartePost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody CARTEITEM payload);
+    ResponseEntity<CARTEITEM> cartePost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody CARTEITEM payload);
 
 }

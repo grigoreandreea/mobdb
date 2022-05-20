@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "doneaza", description = "the doneaza API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface DoneazaApi {
 
     @ApiOperation(value = "", nickname = "doneazaBatchloadPost", notes = "Create new records on DONEAZA", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface DoneazaApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> doneazaBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> doneazaBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "doneazaGet", notes = "Retrieve records from DONEAZA", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface DoneazaApi {
     @RequestMapping(value = "/doneaza",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> doneazaGet();
+    ResponseEntity<Object> doneazaGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "doneazaIdDelete", notes = "Remove a record from DONEAZA", response = DONEAZAITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface DoneazaApi {
     @RequestMapping(value = "/doneaza/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<DONEAZAITEM> doneazaIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<DONEAZAITEM> doneazaIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "doneazaIdGet", notes = "Retrieve a record from DONEAZA", response = DONEAZAITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface DoneazaApi {
     @RequestMapping(value = "/doneaza/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<DONEAZAITEM> doneazaIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<DONEAZAITEM> doneazaIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "doneazaIdPut", notes = "Create or update a record on DONEAZA", response = DONEAZAITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface DoneazaApi {
     @RequestMapping(value = "/doneaza/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<DONEAZAITEM> doneazaIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody DONEAZAITEM payload);
+    ResponseEntity<DONEAZAITEM> doneazaIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody DONEAZAITEM payload);
 
 
     @ApiOperation(value = "", nickname = "doneazaPost", notes = "Create a new record on DONEAZA", response = DONEAZAITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface DoneazaApi {
     @RequestMapping(value = "/doneaza",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<DONEAZAITEM> doneazaPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody DONEAZAITEM payload);
+    ResponseEntity<DONEAZAITEM> doneazaPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody DONEAZAITEM payload);
 
 }

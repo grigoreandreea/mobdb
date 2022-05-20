@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "personal_achizitii", description = "the personal_achizitii API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface PersonalAchizitiiApi {
 
     @ApiOperation(value = "", nickname = "personalAchizitiiBatchloadPost", notes = "Create new records on PERSONAL_ACHIZITII", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface PersonalAchizitiiApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> personalAchizitiiBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> personalAchizitiiBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "personalAchizitiiGet", notes = "Retrieve records from PERSONAL_ACHIZITII", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface PersonalAchizitiiApi {
     @RequestMapping(value = "/personal_achizitii",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> personalAchizitiiGet();
+    ResponseEntity<Object> personalAchizitiiGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "personalAchizitiiIdDelete", notes = "Remove a record from PERSONAL_ACHIZITII", response = PERSONALACHIZITIIITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface PersonalAchizitiiApi {
     @RequestMapping(value = "/personal_achizitii/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<PERSONALACHIZITIIITEM> personalAchizitiiIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<PERSONALACHIZITIIITEM> personalAchizitiiIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "personalAchizitiiIdGet", notes = "Retrieve a record from PERSONAL_ACHIZITII", response = PERSONALACHIZITIIITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface PersonalAchizitiiApi {
     @RequestMapping(value = "/personal_achizitii/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<PERSONALACHIZITIIITEM> personalAchizitiiIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<PERSONALACHIZITIIITEM> personalAchizitiiIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "personalAchizitiiIdPut", notes = "Create or update a record on PERSONAL_ACHIZITII", response = PERSONALACHIZITIIITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface PersonalAchizitiiApi {
     @RequestMapping(value = "/personal_achizitii/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<PERSONALACHIZITIIITEM> personalAchizitiiIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody PERSONALACHIZITIIITEM payload);
+    ResponseEntity<PERSONALACHIZITIIITEM> personalAchizitiiIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody PERSONALACHIZITIIITEM payload);
 
 
     @ApiOperation(value = "", nickname = "personalAchizitiiPost", notes = "Create a new record on PERSONAL_ACHIZITII", response = PERSONALACHIZITIIITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface PersonalAchizitiiApi {
     @RequestMapping(value = "/personal_achizitii",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<PERSONALACHIZITIIITEM> personalAchizitiiPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody PERSONALACHIZITIIITEM payload);
+    ResponseEntity<PERSONALACHIZITIIITEM> personalAchizitiiPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody PERSONALACHIZITIIITEM payload);
 
 }

@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "donator", description = "the donator API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface DonatorApi {
 
     @ApiOperation(value = "", nickname = "donatorBatchloadPost", notes = "Create new records on DONATOR", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface DonatorApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> donatorBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> donatorBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "donatorGet", notes = "Retrieve records from DONATOR", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface DonatorApi {
     @RequestMapping(value = "/donator",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> donatorGet();
+    ResponseEntity<Object> donatorGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "donatorIdDelete", notes = "Remove a record from DONATOR", response = DONATORITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface DonatorApi {
     @RequestMapping(value = "/donator/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<DONATORITEM> donatorIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<DONATORITEM> donatorIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "donatorIdGet", notes = "Retrieve a record from DONATOR", response = DONATORITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface DonatorApi {
     @RequestMapping(value = "/donator/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<DONATORITEM> donatorIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<DONATORITEM> donatorIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "donatorIdPut", notes = "Create or update a record on DONATOR", response = DONATORITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface DonatorApi {
     @RequestMapping(value = "/donator/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<DONATORITEM> donatorIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody DONATORITEM payload);
+    ResponseEntity<DONATORITEM> donatorIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody DONATORITEM payload);
 
 
     @ApiOperation(value = "", nickname = "donatorPost", notes = "Create a new record on DONATOR", response = DONATORITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface DonatorApi {
     @RequestMapping(value = "/donator",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<DONATORITEM> donatorPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody DONATORITEM payload);
+    ResponseEntity<DONATORITEM> donatorPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody DONATORITEM payload);
 
 }

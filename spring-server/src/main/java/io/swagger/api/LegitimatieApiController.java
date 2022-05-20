@@ -1,9 +1,9 @@
 package io.swagger.api;
 
-import io.swagger.model.AUTORITEM;
-import io.swagger.model.LEGITIMATIEITEM;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiParam;
+import io.swagger.model.LEGITIMATIEITEM;
+import io.swagger.repositories.Config;
 import io.swagger.repositories.LegitimatieRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,16 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import java.io.IOException;
-import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-05-16T16:00:11.731Z")
 
 @Controller
@@ -42,8 +37,12 @@ public class LegitimatieApiController implements LegitimatieApi {
     @org.springframework.beans.factory.annotation.Autowired
     io.swagger.repositories.LegitimatieRepository legitimatieRepository;
 
-    public ResponseEntity<String> legitimatieBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<String> legitimatieBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        legitimatieRepository = new LegitimatieRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("")) {
             try {
                 return new ResponseEntity<String>(objectMapper.readValue("", String.class), HttpStatus.NOT_IMPLEMENTED);
@@ -56,8 +55,12 @@ public class LegitimatieApiController implements LegitimatieApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Object> legitimatieGet() {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<Object> legitimatieGet(@PathVariable("db") String db) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        legitimatieRepository = new LegitimatieRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity(legitimatieRepository.getLegitimatie(), HttpStatus.OK);
@@ -70,8 +73,12 @@ public class LegitimatieApiController implements LegitimatieApi {
         return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<LEGITIMATIEITEM> legitimatieIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<LEGITIMATIEITEM> legitimatieIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        legitimatieRepository = new LegitimatieRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity(legitimatieRepository.deleteLegitimatie(id), HttpStatus.OK);
@@ -84,8 +91,12 @@ public class LegitimatieApiController implements LegitimatieApi {
         return new ResponseEntity<LEGITIMATIEITEM>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<LEGITIMATIEITEM> legitimatieIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<LEGITIMATIEITEM> legitimatieIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        legitimatieRepository = new LegitimatieRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity(legitimatieRepository.getLegitimatie(id), HttpStatus.OK);
@@ -98,8 +109,12 @@ public class LegitimatieApiController implements LegitimatieApi {
         return new ResponseEntity<LEGITIMATIEITEM>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<LEGITIMATIEITEM> legitimatieIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody LEGITIMATIEITEM payload) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<LEGITIMATIEITEM> legitimatieIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody LEGITIMATIEITEM payload) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        legitimatieRepository = new LegitimatieRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity<LEGITIMATIEITEM>(legitimatieRepository.updateLegitimatie(id, payload), HttpStatus.OK);
@@ -112,8 +127,12 @@ public class LegitimatieApiController implements LegitimatieApi {
         return new ResponseEntity<LEGITIMATIEITEM>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<LEGITIMATIEITEM> legitimatiePost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody LEGITIMATIEITEM payload) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<LEGITIMATIEITEM> legitimatiePost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody LEGITIMATIEITEM payload) {
+       String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        legitimatieRepository = new LegitimatieRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity<LEGITIMATIEITEM>(legitimatieRepository.addLegitimatie(payload), HttpStatus.OK);

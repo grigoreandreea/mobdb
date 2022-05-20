@@ -25,7 +25,7 @@ import java.util.List;
 
 @Validated
 @Api(value = "furnizor", description = "the furnizor API")
-@RequestMapping(value = "/ords/testuser2")
+@RequestMapping(value = "/ords/{db}")
 public interface FurnizorApi {
 
     @ApiOperation(value = "", nickname = "furnizorBatchloadPost", notes = "Create new records on FURNIZOR", response = String.class, tags={  })
@@ -35,7 +35,7 @@ public interface FurnizorApi {
         produces = { "text/plain" }, 
         consumes = { "text/csv" },
         method = RequestMethod.POST)
-    ResponseEntity<String> furnizorBatchloadPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
+    ResponseEntity<String> furnizorBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
 
     @ApiOperation(value = "", nickname = "furnizorGet", notes = "Retrieve records from FURNIZOR", response = Object.class, tags={  })
@@ -44,7 +44,7 @@ public interface FurnizorApi {
     @RequestMapping(value = "/furnizor",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> furnizorGet();
+    ResponseEntity<Object> furnizorGet(@PathVariable("db") String db);
 
 
     @ApiOperation(value = "", nickname = "furnizorIdDelete", notes = "Remove a record from FURNIZOR", response = FURNIZORITEM.class, tags={  })
@@ -53,7 +53,7 @@ public interface FurnizorApi {
     @RequestMapping(value = "/furnizor/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<FURNIZORITEM> furnizorIdDelete(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<FURNIZORITEM> furnizorIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "furnizorIdGet", notes = "Retrieve a record from FURNIZOR", response = FURNIZORITEM.class, tags={  })
@@ -62,7 +62,7 @@ public interface FurnizorApi {
     @RequestMapping(value = "/furnizor/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<FURNIZORITEM> furnizorIdGet(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
+    ResponseEntity<FURNIZORITEM> furnizorIdGet(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id);
 
 
     @ApiOperation(value = "", nickname = "furnizorIdPut", notes = "Create or update a record on FURNIZOR", response = FURNIZORITEM.class, tags={  })
@@ -72,7 +72,7 @@ public interface FurnizorApi {
     @RequestMapping(value = "/furnizor/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<FURNIZORITEM> furnizorIdPut(@Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody FURNIZORITEM payload);
+    ResponseEntity<FURNIZORITEM> furnizorIdPut(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody FURNIZORITEM payload);
 
 
     @ApiOperation(value = "", nickname = "furnizorPost", notes = "Create a new record on FURNIZOR", response = FURNIZORITEM.class, tags={  })
@@ -81,6 +81,6 @@ public interface FurnizorApi {
     @RequestMapping(value = "/furnizor",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<FURNIZORITEM> furnizorPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody FURNIZORITEM payload);
+    ResponseEntity<FURNIZORITEM> furnizorPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody FURNIZORITEM payload);
 
 }
