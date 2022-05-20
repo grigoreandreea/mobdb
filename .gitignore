@@ -45,4 +45,4 @@ wwwroot/*.js
 node_modules
 typings
 dist
-spring-server/target
+spring-server/target/*
