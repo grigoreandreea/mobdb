@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CARTEITEM, DefaultService} from "../../swagger-generated";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatDialogRef} from "@angular/material/dialog";
 
