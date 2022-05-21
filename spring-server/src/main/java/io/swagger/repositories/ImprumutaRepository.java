@@ -59,8 +59,8 @@ public class ImprumutaRepository {
         String getTermenLimita = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
 
         String sql = "insert into imprumuta(cod_cititor, cod_carte, data_imprumut, data_restituire, termen_limita) values(" +
-                imprumuta.getCodCititor() + ",'" +  imprumuta.getCodCarte()+ ",'" + getDataImprumut
-                + ",'" +  getDataRestituire + ",'" +  getTermenLimita + "')";
+                imprumuta.getCodCititor() + "," +  imprumuta.getCodCarte()+ ",'" + getDataImprumut
+                + "','" +  getDataRestituire + "','" +  getTermenLimita + "')";
 
         jdbcTemplate.execute(sql);
 
