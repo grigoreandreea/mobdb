@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
 
 
@@ -41,11 +42,10 @@ public class AutorRepository {
 
     public AUTORITEM addAuthor(AUTORITEM autor) {
 
-        String sql = "insert into autor(cod_autor,nume,prenume, data_n) values(" +
-                autor.getCodAutor() + ",'" +  autor.getNume() + "','" +  autor.getPrenume() + "','" +  autor.getDataN() + "')";
+        String sql = "INSERT INTO autor(cod_autor, nume, prenume, data_n) VALUES (?, ?, ?, ?)";
+        Object[] params = new Object[] {autor.getCodAutor(), autor.getNume(),  autor.getPrenume(), autor.getDataN()};
 
-        jdbcTemplate.execute(sql);
-
+        jdbcTemplate.update(sql, params);
         return autor;
     }
 
