@@ -25,6 +25,8 @@ import { CititorComponent } from './cititor/cititor.component';
 import { AddCititorComponent } from './cititor/add-cititor/add-cititor.component';
 import { EditCititorComponent } from './cititor/edit-cititor/edit-cititor.component';
 import { SelectDatabaseComponent } from './select-database/select-database.component';
+import { LegitimatieComponent } from './legitimatie/legitimatie.component';
+import { AddLegitimatieComponent } from './legitimatie/add-legitimatie/add-legitimatie.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { SelectDatabaseComponent } from './select-database/select-database.compo
     AddCititorComponent,
     EditCititorComponent,
     SelectDatabaseComponent,
+    LegitimatieComponent,
+    AddLegitimatieComponent
   ],
   imports: [
     BrowserModule,

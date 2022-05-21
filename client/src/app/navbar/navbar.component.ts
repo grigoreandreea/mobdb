@@ -29,4 +29,8 @@ export class NavbarComponent implements OnInit {
   public goToCititori() {
     this.router.navigate(['/cititori']);
   }
+
+  public goToLegitimatii() {
+    this.router.navigate(['/legitimatii']);
+  }
 }

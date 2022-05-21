@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Adauga legitimatie</h2>
+<mat-dialog-content>
+  <div class="example-container">
+    <div class="form-container">
+      <form [formGroup]="addLegitimatieForm" (submit)="addLegitimatie()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Cod legitimatie
+          </mat-label>
+          <input matInput formControlName="serie_legitimatie" required>
+          <mat-error
+            *ngIf="addLegitimatieForm && addLegitimatieForm.controls
+          && addLegitimatieForm.controls['serie_legitimatie'] && addLegitimatieForm.controls['serie_legitimatie'].touched
+          && addLegitimatieForm.controls['serie_legitimatie'].invalid && addLegitimatieForm.controls['serie_legitimatie'].errors">
+            <span *ngIf="addLegitimatieForm.controls['serie_legitimatie'].errors['required']">This field is
+              mandatory.</span>
+            <span *ngIf="addLegitimatieForm.controls['serie_legitimatie'].errors['addLegitimatieForm']">This field is
+              invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Data nasterii
+          </mat-label>
+          <input matInput formControlName="data_expirare" type="date">
+          <mat-error
+            *ngIf="addLegitimatieForm && addLegitimatieForm.controls
+          && addLegitimatieForm.controls['data_expirare'] && addLegitimatieForm.controls['data_expirare'].touched
+          && addLegitimatieForm.controls['data_expirare'].invalid && addLegitimatieForm.controls['data_expirare'].errors">
+            <span *ngIf="addLegitimatieForm.controls['data_expirare'].errors['required']">This field is
+              mandatory.</span>
+            <span *ngIf="addLegitimatieForm.controls['data_expirare'].errors['addLegitimatieForm']">This field is
+              invalid.</span>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" type="submit" (click)="addLegitimatie()">Save</button>
+</mat-dialog-actions>

@@ -5,6 +5,8 @@ import io.swagger.model.LEGITIMATIEITEM;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.List;
 import java.util.Random;
@@ -39,10 +41,13 @@ public class LegitimatieRepository {
 
     public LEGITIMATIEITEM addLegitimatie(LEGITIMATIEITEM legitimatie) {
 
-        String sql = "insert into legitimatie(serie_legitimatie, data_expirare) values('" +
-                legitimatie.getSerieLegitimatie() + "','" + legitimatie.getDataExpirare()  +  "')";
+        LocalDate formatedDate = LocalDate.parse(legitimatie.getDataExpirare());
+        String formattedDate = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
 
-        jdbcTemplate.execute(sql);
+        String sql = "INSERT INTO legitimatie(serie_legitimatie, data_expirare) VALUES (?, ?)";
+        Object[] params = new Object[] {legitimatie.getSerieLegitimatie(), formattedDate};
+
+        jdbcTemplate.update(sql, params);
 
         return legitimatie;
     }
