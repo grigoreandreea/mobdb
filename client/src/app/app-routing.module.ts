@@ -5,6 +5,7 @@ import {BookComponent} from "./book/book.component";
 import {AutorComponent} from "./autor/autor.component";
 import {CititorComponent} from "./cititor/cititor.component";
 import {SelectDatabaseComponent} from "./select-database/select-database.component";
+import {ImprumutComponent} from "./imprumut/imprumut.component";
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'cititori', component: CititorComponent
+  },
+  {
+    path: 'imprumuturi', component: ImprumutComponent
   },
   {
     path: 'select-database', component: SelectDatabaseComponent

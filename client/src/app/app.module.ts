@@ -25,14 +25,20 @@ import { CititorComponent } from './cititor/cititor.component';
 import { AddCititorComponent } from './cititor/add-cititor/add-cititor.component';
 import { EditCititorComponent } from './cititor/edit-cititor/edit-cititor.component';
 import { SelectDatabaseComponent } from './select-database/select-database.component';
+import {ImprumutComponent} from "./imprumut/imprumut.component";
+import {EditImprumutComponent} from "./imprumut/edit-imprumut/edit-imprumut.component";
+import {AddImprumutComponent} from "./imprumut/add-imprumut/add-imprumut.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
-    NavbarComponent,
     EditBookComponent,
     AddBookComponent,
+    ImprumutComponent,
+    EditImprumutComponent,
+    AddImprumutComponent,
+    NavbarComponent,
     AutorComponent,
     AddAutorComponent,
     EditAutorComponent,

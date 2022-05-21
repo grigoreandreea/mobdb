@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {DefaultService} from "./swagger-generated";
 
 @Component({
   selector: 'app-root',
@@ -9,10 +8,8 @@ import {DefaultService} from "./swagger-generated";
 export class AppComponent implements OnInit {
   title = 'Angular';
 
-  constructor(private defaultService: DefaultService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.defaultService.autorGet().subscribe(e => console.log(e));
-  }
+  ngOnInit() { }
 
 }

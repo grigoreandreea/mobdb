@@ -35,7 +35,6 @@ export class BookComponent implements OnInit {
   public addBook() {
     const modalRef = this.modalService.open(AddBookComponent);
     modalRef.afterClosed().subscribe((response) => {
-      console.log('add response: ', response);
       if (response) {
         this.dataSource = [response, ...this.dataSource]
       }
@@ -46,7 +45,6 @@ export class BookComponent implements OnInit {
     const modalRef = this.modalService.open(EditBookComponent);
     modalRef.componentInstance.selectedBookDetails = book;
     modalRef.afterClosed().subscribe((response) => {
-      console.log('edit response: ', response);
       if (response) {
         this.dataSource = this.dataSource.map(e => e.cod_carte === response.cod_carte ? response : e);
       }
