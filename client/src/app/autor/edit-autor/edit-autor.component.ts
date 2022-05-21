@@ -49,7 +49,7 @@ export class EditAutorComponent implements OnInit {
     };
     const parsedParams = transformCamelCaseKeysToUnderscore(params);
     this.defaultService
-      .autorIdPut('' + this.selectedAutorDetails?.codAutor, parsedParams)
+      .autorIdPut('' + this.selectedAutorDetails?.codAutor, params)
       .subscribe({
         next: (data) => {
           this.onEditAutorSuccess(params);

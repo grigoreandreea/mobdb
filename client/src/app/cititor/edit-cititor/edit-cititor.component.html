@@ -36,15 +36,17 @@
             <span *ngIf="editCititorForm.controls['prenume'].errors['editCititorForm']">This field is invalid.</span>
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label> Gen
-          </mat-label>
-          <input matInput formControlName="gen" required type="text">
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>Gen</mat-label>
+          <select matNativeControl required>
+            <option value="masculin">M</option>
+            <option value="feminin">F</option>
+          </select>
           <mat-error *ngIf="editCititorForm && editCititorForm.controls
           && editCititorForm.controls['gen'] && editCititorForm.controls['gen'].touched
           && editCititorForm.controls['gen'].invalid && editCititorForm.controls['gen'].errors">
             <span *ngIf="editCititorForm.controls['gen'].errors['required']">This field is mandatory.</span>
-            <span *ngIf="editCititorForm.controls['gen'].errors['editCititorForm']">This field is invalid.</span>
+            <span *ngIf="editCititorForm.controls['gen'].errors['addCititorForm']">This field is invalid.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="form-field" appearance="outline">

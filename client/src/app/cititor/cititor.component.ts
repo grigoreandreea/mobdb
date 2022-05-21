@@ -35,7 +35,9 @@ export class CititorComponent implements OnInit {
     const modalRef = this.modalService.open(AddCititorComponent);
     modalRef.afterClosed().subscribe((response) => {
       console.log('add response: ', response);
-      this.dataSource = [response, ...this.dataSource]
+      if (response ) {
+        this.dataSource = [response, ...this.dataSource]
+      }
     });
   }
 
@@ -44,7 +46,9 @@ export class CititorComponent implements OnInit {
     modalRef.componentInstance.selectedCititorDetails = cititor;
     modalRef.afterClosed().subscribe((response) => {
       console.log('edit response: ', response);
-      this.dataSource = this.dataSource.map(e => e.codCititor === response.codCititor ? response : e)
+      if (response) {
+        this.dataSource = this.dataSource.map(e => e.codCititor === response.codCititor ? response : e)
+      }
     });
   }
 

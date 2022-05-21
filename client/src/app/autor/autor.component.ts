@@ -4,6 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {transformCamelCaseKeysToUnderscore, transformUnderscoreKeysToCamelCase} from "../swagger-generated/api/helpers";
 import {AddAutorComponent} from "./add-autor/add-autor.component";
 import {EditAutorComponent} from "./edit-autor/edit-autor.component";
+import * as moment from 'moment';
 
 const ELEMENT_DATA: AUTORITEM[] = [
   // {codAutor: 1, nume: 'Eminescu', prenume: 'Mihai', dataN: '2002-12-12 00:00:00'},
@@ -25,7 +26,13 @@ export class AutorComponent implements OnInit {
 
   ngOnInit(): void {
     this.defaultService.autorGet().subscribe((response) => {
-      this.dataSource = response.map(e => transformUnderscoreKeysToCamelCase(e));
+      this.dataSource = response.map(e => {
+        const autor = transformUnderscoreKeysToCamelCase(e);
+        return {
+          ...autor,
+          parsedDataN: moment(autor.dataN).format('DD MMM YYYY')
+        }
+      });
     });
   }
 
@@ -33,7 +40,9 @@ export class AutorComponent implements OnInit {
     const modalRef = this.modalService.open(AddAutorComponent);
     modalRef.afterClosed().subscribe((response) => {
       console.log('add response: ', response);
-      this.dataSource = [response, ...this.dataSource]
+      if (response ) {
+        this.dataSource = [response, ...this.dataSource]
+      }
     });
   }
 
@@ -42,7 +51,9 @@ export class AutorComponent implements OnInit {
     modalRef.componentInstance.selectedAutorDetails = autor;
     modalRef.afterClosed().subscribe((response) => {
       console.log('edit response: ', response);
-      this.dataSource = this.dataSource.map(e => e.codAutor === response.codAutor ? response : e)
+      if (response) {
+        this.dataSource = this.dataSource.map(e => e.codAutor === response.codAutor ? response : e)
+      }
     });
   }
 
