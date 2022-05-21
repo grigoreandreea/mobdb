@@ -28,6 +28,9 @@ import { SelectDatabaseComponent } from './select-database/select-database.compo
 import {ImprumutComponent} from "./imprumut/imprumut.component";
 import {EditImprumutComponent} from "./imprumut/edit-imprumut/edit-imprumut.component";
 import {AddImprumutComponent} from "./imprumut/add-imprumut/add-imprumut.component";
+import {BibliotecarComponent} from "./bibliotecar/bibliotecar.component";
+import {AddBibliotecarComponent} from "./bibliotecar/add-bibliotecar/add-bibliotecar.component";
+import {EditBibliotecarComponent} from "./bibliotecar/edit-bibliotecar/edit-bibliotecar.component";
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import {AddImprumutComponent} from "./imprumut/add-imprumut/add-imprumut.compone
     AutorComponent,
     AddAutorComponent,
     EditAutorComponent,
+    BibliotecarComponent,
+    AddBibliotecarComponent,
+    EditBibliotecarComponent,
     CititorComponent,
     AddCititorComponent,
     EditCititorComponent,

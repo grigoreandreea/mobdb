@@ -1,0 +1,94 @@
+<h2 mat-dialog-title>Adauga bibliotecar</h2>
+<mat-dialog-content>
+  <div class="example-container">
+    <div class="form-container">
+      <form [formGroup]="addBibliotecarForm" (submit)="addBibliotecar()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Cod bibliotecar
+          </mat-label>
+          <input matInput formControlName="cod_bibliotecar" required>
+          <mat-error *ngIf="addBibliotecarForm && addBibliotecarForm.controls
+          && addBibliotecarForm.controls['cod_bibliotecar'] && addBibliotecarForm.controls['cod_bibliotecar'].touched
+          && addBibliotecarForm.controls['cod_bibliotecar'].invalid && addBibliotecarForm.controls['cod_bibliotecar'].errors">
+            <span *ngIf="addBibliotecarForm.controls['cod_bibliotecar'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBibliotecarForm.controls['cod_bibliotecar'].errors['addBibliotecarForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Nume
+          </mat-label>
+          <input matInput formControlName="nume" required type="text">
+          <mat-error *ngIf="addBibliotecarForm && addBibliotecarForm.controls
+          && addBibliotecarForm.controls['nume'] && addBibliotecarForm.controls['nume'].touched
+          && addBibliotecarForm.controls['nume'].invalid && addBibliotecarForm.controls['nume'].errors">
+            <span *ngIf="addBibliotecarForm.controls['nume'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBibliotecarForm.controls['nume'].errors['addBibliotecarForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Prenume
+          </mat-label>
+          <input matInput formControlName="prenume" required type="text">
+          <mat-error *ngIf="addBibliotecarForm && addBibliotecarForm.controls
+          && addBibliotecarForm.controls['prenume'] && addBibliotecarForm.controls['prenume'].touched
+          && addBibliotecarForm.controls['prenume'].invalid && addBibliotecarForm.controls['prenume'].errors">
+            <span *ngIf="addBibliotecarForm.controls['prenume'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBibliotecarForm.controls['prenume'].errors['addBibliotecarForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Gen
+          </mat-label>
+          <input matInput formControlName="gen" required type="text">
+          <mat-error *ngIf="addBibliotecarForm && addBibliotecarForm.controls
+          && addBibliotecarForm.controls['gen'] && addBibliotecarForm.controls['gen'].touched
+          && addBibliotecarForm.controls['gen'].invalid && addBibliotecarForm.controls['gen'].errors">
+            <span *ngIf="addBibliotecarForm.controls['gen'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBibliotecarForm.controls['gen'].errors['addBibliotecarForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Data nasterii
+          </mat-label>
+          <input matInput formControlName="data_n" type="date">
+          <mat-error *ngIf="addBibliotecarForm && addBibliotecarForm.controls
+          && addBibliotecarForm.controls['data_n'] && addBibliotecarForm.controls['data_n'].touched
+          && addBibliotecarForm.controls['data_n'].invalid && addBibliotecarForm.controls['data_n'].errors">
+            <span *ngIf="addBibliotecarForm.controls['data_n'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBibliotecarForm.controls['data_n'].errors['addBibliotecarForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Strada si numar
+          </mat-label>
+          <input matInput formControlName="str_nr" required type="text">
+          <mat-error *ngIf="addBibliotecarForm && addBibliotecarForm.controls
+          && addBibliotecarForm.controls['str_nr'] && addBibliotecarForm.controls['str_nr'].touched
+          && addBibliotecarForm.controls['str_nr'].invalid && addBibliotecarForm.controls['str_nr'].errors">
+            <span *ngIf="addBibliotecarForm.controls['str_nr'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBibliotecarForm.controls['str_nr'].errors['addBibliotecarForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Localitate
+          </mat-label>
+          <input matInput formControlName="localitate" required type="text">
+          <mat-error *ngIf="addBibliotecarForm && addBibliotecarForm.controls
+          && addBibliotecarForm.controls['localitate'] && addBibliotecarForm.controls['localitate'].touched
+          && addBibliotecarForm.controls['localitate'].invalid && addBibliotecarForm.controls['localitate'].errors">
+            <span *ngIf="addBibliotecarForm.controls['localitate'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBibliotecarForm.controls['localitate'].errors['addBibliotecarForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" type="submit" (click)="addBibliotecar()">Save</button>
+</mat-dialog-actions>
