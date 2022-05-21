@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>Editeaza carte</h2>
+<mat-dialog-content>
+  <div class="example-container">
+    <div class="form-container">
+      <form [formGroup]="editImprumutForm" (submit)="editImprumut()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Data imprumut
+          </mat-label>
+          <input matInput formControlName="data_imprumut" type="date">
+          <mat-error *ngIf="editImprumutForm && editImprumutForm.controls
+          && editImprumutForm.controls['data_imprumut'] && editImprumutForm.controls['data_imprumut'].touched
+          && editImprumutForm.controls['data_imprumut'].invalid && editImprumutForm.controls['data_imprumut'].errors">
+            <span *ngIf="editImprumutForm.controls['data_imprumut'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="editImprumutForm.controls['data_imprumut'].errors['editImprumutForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Termen limita
+          </mat-label>
+          <input matInput formControlName="termen_limita" type="date">
+          <mat-error *ngIf="editImprumutForm && editImprumutForm.controls
+          && editImprumutForm.controls['termen_limita'] && editImprumutForm.controls['termen_limita'].touched
+          && editImprumutForm.controls['termen_limita'].invalid && editImprumutForm.controls['termen_limita'].errors">
+            <span *ngIf="editImprumutForm.controls['termen_limita'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="editImprumutForm.controls['termen_limita'].errors['editImprumutForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Data restituire
+          </mat-label>
+          <input matInput formControlName="data_restituire" type="date">
+          <mat-error *ngIf="editImprumutForm && editImprumutForm.controls
+          && editImprumutForm.controls['data_restituire'] && editImprumutForm.controls['data_restituire'].touched
+          && editImprumutForm.controls['data_restituire'].invalid && editImprumutForm.controls['data_restituire'].errors">
+            <span *ngIf="editImprumutForm.controls['data_restituire'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="editImprumutForm.controls['data_restituire'].errors['editImprumutForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="editImprumut()" color="primary"  type="submit">Save</button>
+</mat-dialog-actions>

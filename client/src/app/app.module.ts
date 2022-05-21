@@ -25,6 +25,12 @@ import { CititorComponent } from './cititor/cititor.component';
 import { AddCititorComponent } from './cititor/add-cititor/add-cititor.component';
 import { EditCititorComponent } from './cititor/edit-cititor/edit-cititor.component';
 import { SelectDatabaseComponent } from './select-database/select-database.component';
+import {ImprumutComponent} from "./imprumut/imprumut.component";
+import {EditImprumutComponent} from "./imprumut/edit-imprumut/edit-imprumut.component";
+import {AddImprumutComponent} from "./imprumut/add-imprumut/add-imprumut.component";
+import {BibliotecarComponent} from "./bibliotecar/bibliotecar.component";
+import {AddBibliotecarComponent} from "./bibliotecar/add-bibliotecar/add-bibliotecar.component";
+import {EditBibliotecarComponent} from "./bibliotecar/edit-bibliotecar/edit-bibliotecar.component";
 import { LegitimatieComponent } from './legitimatie/legitimatie.component';
 import { AddLegitimatieComponent } from './legitimatie/add-legitimatie/add-legitimatie.component';
 
@@ -32,12 +38,18 @@ import { AddLegitimatieComponent } from './legitimatie/add-legitimatie/add-legit
   declarations: [
     AppComponent,
     BookComponent,
-    NavbarComponent,
     EditBookComponent,
     AddBookComponent,
+    ImprumutComponent,
+    EditImprumutComponent,
+    AddImprumutComponent,
+    NavbarComponent,
     AutorComponent,
     AddAutorComponent,
     EditAutorComponent,
+    BibliotecarComponent,
+    AddBibliotecarComponent,
+    EditBibliotecarComponent,
     CititorComponent,
     AddCititorComponent,
     EditCititorComponent,

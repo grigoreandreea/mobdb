@@ -1,0 +1,73 @@
+<h2 mat-dialog-title>Adauga carte</h2>
+<mat-dialog-content>
+  <div class="example-container">
+    <div class="form-container">
+      <form [formGroup]="addImprumutForm" (submit)="addImprumut()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Cod carte
+          </mat-label>
+          <input matInput formControlName="cod_carte" required>
+          <mat-error *ngIf="addImprumutForm && addImprumutForm.controls
+          && addImprumutForm.controls['cod_carte'] && addImprumutForm.controls['cod_carte'].touched
+          && addImprumutForm.controls['cod_carte'].invalid && addImprumutForm.controls['cod_carte'].errors">
+            <span *ngIf="addImprumutForm.controls['cod_carte'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addImprumutForm.controls['cod_carte'].errors['addImprumutForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Cod cititor
+          </mat-label>
+          <input matInput formControlName="cod_cititor" required>
+          <mat-error *ngIf="addImprumutForm && addImprumutForm.controls
+          && addImprumutForm.controls['cod_cititor'] && addImprumutForm.controls['cod_cititor'].touched
+          && addImprumutForm.controls['cod_cititor'].invalid && addImprumutForm.controls['cod_cititor'].errors">
+            <span *ngIf="addImprumutForm.controls['cod_cititor'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addImprumutForm.controls['cod_cititor'].errors['addImprumutForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Data imprumut
+          </mat-label>
+          <input matInput formControlName="data_imprumut" type="date">
+          <mat-error *ngIf="addImprumutForm && addImprumutForm.controls
+          && addImprumutForm.controls['data_imprumut'] && addImprumutForm.controls['data_imprumut'].touched
+          && addImprumutForm.controls['data_imprumut'].invalid && addImprumutForm.controls['data_imprumut'].errors">
+            <span *ngIf="addImprumutForm.controls['data_imprumut'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addImprumutForm.controls['data_imprumut'].errors['addImprumutForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Termen limita
+          </mat-label>
+          <input matInput formControlName="termen_limita" type="date">
+          <mat-error *ngIf="addImprumutForm && addImprumutForm.controls
+          && addImprumutForm.controls['termen_limita'] && addImprumutForm.controls['termen_limita'].touched
+          && addImprumutForm.controls['termen_limita'].invalid && addImprumutForm.controls['termen_limita'].errors">
+            <span *ngIf="addImprumutForm.controls['termen_limita'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addImprumutForm.controls['termen_limita'].errors['addImprumutForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Data restituire
+          </mat-label>
+          <input matInput formControlName="data_restituire" type="date">
+          <mat-error *ngIf="addImprumutForm && addImprumutForm.controls
+          && addImprumutForm.controls['data_restituire'] && addImprumutForm.controls['data_restituire'].touched
+          && addImprumutForm.controls['data_restituire'].invalid && addImprumutForm.controls['data_restituire'].errors">
+            <span *ngIf="addImprumutForm.controls['data_restituire'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addImprumutForm.controls['data_restituire'].errors['addImprumutForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" type="submit" (click)="addImprumut()">Save</button>
+</mat-dialog-actions>

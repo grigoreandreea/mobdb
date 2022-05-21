@@ -3,11 +3,13 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
-    <span class="cursor" (click)="goToSelectDatabase()">Baza de date</span>
-    <span class="cursor" (click)="goToBooks()">Carti</span>
-    <span class="cursor" (click)="goToAutori()">Autori</span>
-    <span class="cursor" (click)="goToCititori()">Cititori</span>
-    <span class="cursor" (click)="goToLegitimatii()">Legitimatii</span>
+    <span class="cursor" (click)="goTo('select-database')">Baza de date</span>
+    <span class="cursor" (click)="goTo('books')">Carti</span>
+    <span class="cursor" (click)="goTo('autori')">Autori</span>
+    <span class="cursor" (click)="goTo('cititori')">Cititori</span>
+    <span class="cursor" (click)="goTo('imprumuturi')">Imprumuturi</span>
+    <span class="cursor" (click)="goTo('bibliotecari')">Bibliotecari</span>
+    <span class="cursor" (click)="goTo('legitimatii')">Legitimatii</span>
     <span class="example-spacer"></span>
     <span>Hello, user!</span>
   </mat-toolbar>

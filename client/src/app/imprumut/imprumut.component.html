@@ -1,0 +1,71 @@
+<ng-container>
+  <div class="page-container">
+    <div class="title-add">
+      <h1 class="first-title">Carti</h1>
+      <button mat-button color="primary" (click)="addImprumut()">Adauga imprumut</button>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="cod_carte">
+      <th mat-header-cell *matHeaderCellDef> Cod carte </th>
+      <td mat-cell *matCellDef="let element"> {{element.cod_carte}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="cod_cititor">
+      <th mat-header-cell *matHeaderCellDef> Cod cititor </th>
+      <td mat-cell *matCellDef="let element"> {{element.cod_cititor}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="data_imprumut">
+      <th mat-header-cell *matHeaderCellDef> Data imprumut </th>
+      <td mat-cell *matCellDef="let element"> {{element.parsedDataImprumut}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="termen_limita">
+      <th mat-header-cell *matHeaderCellDef> Termen limita </th>
+      <td mat-cell *matCellDef="let element"> {{element.parsedTermenLimita}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="data_restituire">
+      <th mat-header-cell *matHeaderCellDef> Data restituire </th>
+      <td mat-cell *matCellDef="let element"> {{element.parsedDataRestituire || '---------------------'}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actiuni</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="d-flex align-items-center">
+          <div ngbDropdown container="body" class="actions-wrapper">
+            <div class="margin-right">
+              <a href="javascript: void(0);" (click)="editImprumut(element)"
+                 class="text-primary cursor-pointer"
+                 placement="top" >
+                <mat-icon aria-hidden="false">edit</mat-icon>
+              </a>
+        </div>
+            <div>
+              <a href="javascript: void(0);" (click)="deleteImprumut(element)"
+                 class="text-primary cursor-pointer"
+                 placement="top" >
+                <mat-icon aria-hidden="false">delete</mat-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  </div>
+</ng-container>

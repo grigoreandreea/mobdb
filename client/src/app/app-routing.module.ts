@@ -6,6 +6,8 @@ import {AutorComponent} from "./autor/autor.component";
 import {CititorComponent} from "./cititor/cititor.component";
 import {SelectDatabaseComponent} from "./select-database/select-database.component";
 import { LegitimatieComponent } from './legitimatie/legitimatie.component';
+import {ImprumutComponent} from "./imprumut/imprumut.component";
+import {BibliotecarComponent} from "./bibliotecar/bibliotecar.component";
 
 const routes: Routes = [
   {
@@ -19,6 +21,12 @@ const routes: Routes = [
   },
   {
     path: 'legitimatii', component: LegitimatieComponent
+  },
+  {
+    path: 'imprumuturi', component: ImprumutComponent
+  },
+  {
+    path: 'bibliotecari', component: BibliotecarComponent
   },
   {
     path: 'select-database', component: SelectDatabaseComponent
