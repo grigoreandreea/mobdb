@@ -421,6 +421,142 @@
       ]
     }
   },
+  "/subcategorie": {
+      "get": {
+        "description": "Retrieve records from SUBCATEGORIE",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "The queried record.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SUBCATEGORIE_ITEM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new record on SUBCATEGORIE",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "The successfully created record.",
+            "schema": {
+              "$ref": "#/definitions/SUBCATEGORIE_ITEM"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "payload",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SUBCATEGORIE_ITEM"
+            }
+          }
+        ]
+      }
+    },
+    "/subcategorie/{id}": {
+      "delete": {
+        "description": "Remove a record from SUBCATEGORIE",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted result.",
+            "schema": {
+              "$ref": "#/definitions/SUBCATEGORIE_ITEM"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "implicit",
+            "pattern": "^[^/]+$"
+          }
+        ]
+      },
+      "get": {
+        "description": "Retrieve a record from SUBCATEGORIE",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "The queried record.",
+            "schema": {
+              "$ref": "#/definitions/SUBCATEGORIE_ITEM"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "implicit",
+            "pattern": "^[^/]+$"
+          }
+        ]
+      },
+      "put": {
+        "description": "Create or update a record on SUBCATEGORIE",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "The successfully updated record.",
+            "schema": {
+              "$ref": "#/definitions/SUBCATEGORIE_ITEM"
+            }
+          },
+          "201": {
+            "description": "The successfully created record.",
+            "schema": {
+              "$ref": "#/definitions/SUBCATEGORIE_ITEM"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "implicit",
+            "pattern": "^[^/]+$"
+          },
+          {
+            "name": "payload",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SUBCATEGORIE_ITEM"
+            }
+          }
+        ]
+      }
+    },
   "/legitimatie": {
     "get": {
       "description": "Retrieve records from LEGITIMATIE",
@@ -2181,6 +2317,19 @@
       }
     }
   },
+  "SUBCATEGORIE_ITEM": {
+	  "properties": {
+		"cod_subcategorie": {
+		  "$ref": "#/definitions/NUMBER"
+		},
+		"cod_categorie": {
+		  "$ref": "#/definitions/NUMBER"
+		},
+		"denumire": {
+		  "$ref": "#/definitions/VARCHAR2"
+		}
+	  }
+	},
   "CITITOR_ITEM": {
     "properties": {
       "cod_cititor": {
