@@ -5,6 +5,8 @@ import io.swagger.model.IMPRUMUTAITEM;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.List;
 
@@ -38,10 +40,16 @@ public class ImprumutaRepository {
     }
 
     public IMPRUMUTAITEM addImprumuta(IMPRUMUTAITEM imprumuta) {
+        LocalDate formatedDate = LocalDate.parse(imprumuta.getDataImprumut());
+        String getDataImprumut = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+        formatedDate = LocalDate.parse(imprumuta.getDataRestituire());
+        String getDataRestituire = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+        formatedDate = LocalDate.parse(imprumuta.getTermenLimita());
+        String getTermenLimita = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
 
         String sql = "insert into imprumuta(cod_cititor, cod_carte, data_imprumut, data_restituire, termen_limita) values(" +
-                imprumuta.getCodCititor() + ",'" +  imprumuta.getCodCarte()+ ",'" +  imprumuta.getDataImprumut()
-                + ",'" +  imprumuta.getDataRestituire() + ",'" +  imprumuta.getTermenLimita() + "')";
+                imprumuta.getCodCititor() + ",'" +  imprumuta.getCodCarte()+ ",'" + getDataImprumut
+                + ",'" +  getDataRestituire + ",'" +  getTermenLimita + "')";
 
         jdbcTemplate.execute(sql);
 
@@ -49,9 +57,15 @@ public class ImprumutaRepository {
     }
 
     public IMPRUMUTAITEM updateImprumuta(String id, IMPRUMUTAITEM imprumuta) {
+        LocalDate formatedDate = LocalDate.parse(imprumuta.getDataImprumut());
+        String getDataImprumut = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+        formatedDate = LocalDate.parse(imprumuta.getDataRestituire());
+        String getDataRestituire = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+        formatedDate = LocalDate.parse(imprumuta.getTermenLimita());
+        String getTermenLimita = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
 
-        String SQL = "update imprumuta set data_imprumut = ?, data_restituire = ?, termen_limita  = ? where cod_cititor = ?";
-        jdbcTemplate.update(SQL, imprumuta.getCodCititor(),imprumuta.getDataImprumut(), imprumuta.getDataRestituire(), imprumuta.getTermenLimita(), id);
+        String SQL = "update imprumuta set data_imprumut = ?, data_restituire = ?, termen_limita  = ? where cod_cititor = ? and cod_carte = ?";
+        jdbcTemplate.update(SQL, getDataImprumut, getDataRestituire, getTermenLimita, id, imprumuta.getCodCarte());
 
         return imprumuta;
     }
