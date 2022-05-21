@@ -25,7 +25,7 @@ export class AddBibliotecarComponent implements OnInit {
       nume: [null, [Validators.required]],
       prenume: [null, Validators.required],
       gen: [null, Validators.required],
-      data_n: [null, Validators.required],
+      data_n: [this.defaultService.DEFAULT_DATE, Validators.required],
       str_nr: [null, Validators.required],
       localitate: [null, Validators.required],
     });

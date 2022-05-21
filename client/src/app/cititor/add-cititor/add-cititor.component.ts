@@ -25,7 +25,7 @@ export class AddCititorComponent implements OnInit {
       serie_legitimatie: [null, Validators.required],
       nume: [null, Validators.required],
       prenume: [null, Validators.required],
-      data_n: [null, Validators.required],
+      data_n: [this.defaultService.DEFAULT_DATE, Validators.required],
       gen: [null, Validators.required],
       str_nr: [null, Validators.required],
       localitate: [null, Validators.required],

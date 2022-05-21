@@ -45,6 +45,8 @@ export class DefaultService {
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
+    public DEFAULT_DATE = '2022-03-01';
+
     constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;

@@ -23,9 +23,9 @@ export class AddImprumutComponent implements OnInit {
     this.addImprumutForm = this.formBuilder.group({
       cod_carte: [null, [Validators.required]],
       cod_cititor: [null, [Validators.required]],
-      data_imprumut: [null, [Validators.required]],
-      termen_limita: [null, [Validators.required]],
-      data_restituire: [null, [Validators.required]],
+      data_imprumut: [this.defaultService.DEFAULT_DATE, [Validators.required]],
+      termen_limita: [this.defaultService.DEFAULT_DATE, [Validators.required]],
+      data_restituire: [this.defaultService.DEFAULT_DATE, [Validators.required]],
     });
   }
 

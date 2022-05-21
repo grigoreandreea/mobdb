@@ -22,7 +22,7 @@ export class AddAutorComponent implements OnInit {
   ngOnInit(): void {
     this.addAutorForm = this.formBuilder.group({
       cod_autor: [null, [Validators.required]],
-      data_n: [null, Validators.required]
+      data_n: [this.defaultService.DEFAULT_DATE, Validators.required]
     });
   }
 
