@@ -31,8 +31,8 @@ public class Config {
     public DataSource dataSourceOltpmodbd() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.url("jdbc:oracle:thin:@localhost:1521:oltpmodbd");
-        dataSourceBuilder.username("oltp_modbd");
-        dataSourceBuilder.password("blue");
+        dataSourceBuilder.username("system");
+        dataSourceBuilder.password("blueroot");
         return dataSourceBuilder.build();
     }
 

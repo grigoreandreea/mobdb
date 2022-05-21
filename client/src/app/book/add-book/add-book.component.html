@@ -4,6 +4,17 @@
     <div class="form-container">
       <form [formGroup]="addBookForm" (submit)="addBook()">
         <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Cod carte
+          </mat-label>
+          <input matInput formControlName="codCarte" required>
+          <mat-error *ngIf="addBookForm && addBookForm.controls
+          && addBookForm.controls['codCarte'] && addBookForm.controls['codCarte'].touched
+          && addBookForm.controls['codCarte'].invalid && addBookForm.controls['codCarte'].errors">
+            <span *ngIf="addBookForm.controls['codCarte'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBookForm.controls['codCarte'].errors['addBookForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
           <mat-label> Subcategorie
           </mat-label>
           <input matInput formControlName="codSubcategorie" required>
@@ -43,5 +54,5 @@
 <mat-dialog-actions>
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" color="primary"  type="submit">Save</button>
+  <button mat-button color="primary" type="submit" (click)="addBook()">Save</button>
 </mat-dialog-actions>

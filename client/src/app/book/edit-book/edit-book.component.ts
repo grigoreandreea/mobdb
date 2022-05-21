@@ -3,6 +3,7 @@ import {CARTEITEM, DefaultService} from "../../swagger-generated";
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatDialogRef} from "@angular/material/dialog";
+import {transformCamelCaseKeysToUnderscore} from "../../swagger-generated/api/helpers";
 
 @Component({
   selector: 'app-edit-book',
@@ -47,11 +48,12 @@ export class EditBookComponent implements OnInit {
       titlu: this.editBookForm?.get('titlu')?.value,
       nrExemplare: this.editBookForm?.get('nrExemplare')?.value,
     };
+    const parsedParams = transformCamelCaseKeysToUnderscore(params);
     this.defaultService
-      .carteIdPut('' + this.selectedBookDetails?.codCarte, this.selectedBookDetails)
+      .carteIdPut('' + this.selectedBookDetails?.codCarte, parsedParams)
       .subscribe({
         next: (data) => {
-          this.onEditBookSuccess(this.selectedBookDetails);
+          this.onEditBookSuccess(params);
         },
         error: (error) => {
           this.onEditBookFail(error);

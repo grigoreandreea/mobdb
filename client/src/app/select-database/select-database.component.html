@@ -1,0 +1,29 @@
+<ng-container>
+  <div class="page-container">
+    <div class="wrapper-buttons">
+      <h1 class="first-title">Selecteaza baza de date</h1>
+      <div class="wrapper-buttons-content">
+        <button class="mat-elevation-z8"
+                mat-button [color]="selectedDb === 'oltpmodbd' ? 'primary' : 'default'"
+                (click)="selectDatabase('oltpmodbd')">
+          oltpmodbd
+        </button>
+        <button class="mat-elevation-z8"
+                mat-button [color]="selectedDb === 'globalmodbd' ? 'primary' : 'default'"
+                (click)="selectDatabase('globalmodbd')">
+          globalmodbd
+        </button>
+        <button class="mat-elevation-z8"
+                mat-button [color]="selectedDb === 'remotele' ? 'primary' : 'default'"
+                (click)="selectDatabase('remotele')">
+          remotele
+        </button>
+        <button class="mat-elevation-z8"
+                mat-button [color]="selectedDb === 'remoteda' ? 'primary' : 'default'"
+                (click)="selectDatabase('remoteda')">
+          remoteda
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

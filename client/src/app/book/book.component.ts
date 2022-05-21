@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {EditBookComponent} from "./edit-book/edit-book.component";
 import {CARTEITEM, DefaultService} from "../swagger-generated";
 import {AddBookComponent} from "./add-book/add-book.component";
+import {transformCamelCaseKeysToUnderscore, transformUnderscoreKeysToCamelCase} from "../swagger-generated/api/helpers";
 
 const ELEMENT_DATA: CARTEITEM[] = [
   {codCarte: 1, titlu: 'Poezii', codSubcategorie: 1, nrExemplare: 4},
@@ -25,7 +26,7 @@ export class BookComponent implements OnInit {
 
   ngOnInit(): void {
     this.defaultService.carteGet().subscribe((response) => {
-      console.log(response);
+      this.dataSource = response.map(e => transformUnderscoreKeysToCamelCase(e));
     });
   }
 
@@ -33,6 +34,9 @@ export class BookComponent implements OnInit {
     const modalRef = this.modalService.open(AddBookComponent);
     modalRef.afterClosed().subscribe((response) => {
       console.log('add response: ', response);
+      if (response) {
+        this.dataSource = [response, ...this.dataSource]
+      }
     });
   }
 
@@ -41,19 +45,18 @@ export class BookComponent implements OnInit {
     modalRef.componentInstance.selectedBookDetails = book;
     modalRef.afterClosed().subscribe((response) => {
       console.log('edit response: ', response);
-      if (response[0]) {
-        this.dataSource = this.dataSource.filter((bookItem) => {
-          if (bookItem.codCarte === response[1].codCarte) {
-            bookItem = response[1];
-          }
-          return bookItem;
-        });
+      if (response) {
+        this.dataSource = this.dataSource.map(e => e.codCarte === response.codCarte ? response : e);
       }
     });
   }
 
-  public deleteBook(book: CARTEITEM | null) {
-    this.defaultService.carteIdDelete('' + book?.codCarte);
+  public deleteBook(book: CARTEITEM) {
+    const parsedBook = transformCamelCaseKeysToUnderscore(book);
+    this.defaultService.carteIdDelete('' + parsedBook.cod_carte)
+      .subscribe(() => {
+        this.dataSource = this.dataSource.filter(e => e.codCarte !== book.codCarte);
+      });
   }
 
 }

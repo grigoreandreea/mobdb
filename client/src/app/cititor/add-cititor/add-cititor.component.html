@@ -1,0 +1,115 @@
+<h2 mat-dialog-title>Adauga cititor</h2>
+<mat-dialog-content>
+  <div class="example-container">
+    <div class="form-container">
+      <form [formGroup]="addCititorForm" (submit)="addCititor()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Cod cititor
+          </mat-label>
+          <input matInput formControlName="codCititor" required>
+          <mat-error *ngIf="addCititorForm && addCititorForm.controls
+          && addCititorForm.controls['codCititor'] && addCititorForm.controls['codCititor'].touched
+          && addCititorForm.controls['codCititor'].invalid && addCititorForm.controls['codCititor'].errors">
+            <span *ngIf="addCititorForm.controls['codCititor'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addCititorForm.controls['codCititor'].errors['addCititorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Serie legitimatie
+          </mat-label>
+          <input matInput formControlName="serieLegitimatie" required type="text">
+          <mat-error *ngIf="addCititorForm && addCititorForm.controls
+          && addCititorForm.controls['serieLegitimatie'] && addCititorForm.controls['serieLegitimatie'].touched
+          && addCititorForm.controls['serieLegitimatie'].invalid && addCititorForm.controls['serieLegitimatie'].errors">
+            <span *ngIf="addCititorForm.controls['serieLegitimatie'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addCititorForm.controls['serieLegitimatie'].errors['addCititorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Nume
+          </mat-label>
+          <input matInput formControlName="nume" required type="text">
+          <mat-error *ngIf="addCititorForm && addCititorForm.controls
+          && addCititorForm.controls['nume'] && addCititorForm.controls['nume'].touched
+          && addCititorForm.controls['nume'].invalid && addCititorForm.controls['nume'].errors">
+            <span *ngIf="addCititorForm.controls['nume'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addCititorForm.controls['nume'].errors['addCititorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Prenume
+          </mat-label>
+          <input matInput formControlName="prenume" required type="text">
+          <mat-error *ngIf="addCititorForm && addCititorForm.controls
+          && addCititorForm.controls['prenume'] && addCititorForm.controls['prenume'].touched
+          && addCititorForm.controls['prenume'].invalid && addCititorForm.controls['prenume'].errors">
+            <span *ngIf="addCititorForm.controls['prenume'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addCititorForm.controls['prenume'].errors['addCititorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>Gen</mat-label>
+          <select matNativeControl required>
+            <option value="masculin">M</option>
+            <option value="feminin">F</option>
+          </select>
+          <mat-error *ngIf="addCititorForm && addCititorForm.controls
+          && addCititorForm.controls['gen'] && addCititorForm.controls['gen'].touched
+          && addCititorForm.controls['gen'].invalid && addCititorForm.controls['gen'].errors">
+            <span *ngIf="addCititorForm.controls['gen'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addCititorForm.controls['gen'].errors['addCititorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Data nasterii
+          </mat-label>
+          <input matInput formControlName="dataN" type="date">
+          <mat-error *ngIf="addCititorForm && addCititorForm.controls
+          && addCititorForm.controls['dataN'] && addCititorForm.controls['dataN'].touched
+          && addCititorForm.controls['dataN'].invalid && addCititorForm.controls['dataN'].errors">
+            <span *ngIf="addCititorForm.controls['dataN'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addCititorForm.controls['dataN'].errors['addCititorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Strada si numar
+          </mat-label>
+          <input matInput formControlName="strNr" required type="text">
+          <mat-error *ngIf="addCititorForm && addCititorForm.controls
+          && addCititorForm.controls['strNr'] && addCititorForm.controls['strNr'].touched
+          && addCititorForm.controls['strNr'].invalid && addCititorForm.controls['strNr'].errors">
+            <span *ngIf="addCititorForm.controls['strNr'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addCititorForm.controls['strNr'].errors['addCititorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Localitate
+          </mat-label>
+          <input matInput formControlName="localitate" required type="text">
+          <mat-error *ngIf="addCititorForm && addCititorForm.controls
+          && addCititorForm.controls['localitate'] && addCititorForm.controls['localitate'].touched
+          && addCititorForm.controls['localitate'].invalid && addCititorForm.controls['localitate'].errors">
+            <span *ngIf="addCititorForm.controls['localitate'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addCititorForm.controls['localitate'].errors['addCititorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Email
+          </mat-label>
+          <input matInput formControlName="email" required type="text">
+          <mat-error *ngIf="addCititorForm && addCititorForm.controls
+          && addCititorForm.controls['email'] && addCititorForm.controls['email'].touched
+          && addCititorForm.controls['email'].invalid && addCititorForm.controls['email'].errors">
+            <span *ngIf="addCititorForm.controls['email'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addCititorForm.controls['email'].errors['addCititorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" type="submit" (click)="addCititor()">Save</button>
+</mat-dialog-actions>

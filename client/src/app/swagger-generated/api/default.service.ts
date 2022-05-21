@@ -40,7 +40,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class DefaultService {
 
-    protected basePath = 'http://127.0.0.1:8080/ords/testuser2';
+    protected basePath = 'http://127.0.0.1:8080/ords/oltpmodbd';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -51,6 +51,11 @@ export class DefaultService {
         if (configuration) {
             this.configuration = configuration;
             this.basePath = basePath || configuration.basePath || this.basePath;
+        }
+
+        const databaseName = localStorage.getItem('database-name');
+        if (databaseName) {
+          this.basePath = `http://127.0.0.1:8080/ords/${databaseName}`
         }
     }
 

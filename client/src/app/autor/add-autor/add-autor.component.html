@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>Adauga autor</h2>
+<mat-dialog-content>
+  <div class="example-container">
+    <div class="form-container">
+      <form [formGroup]="addAutorForm" (submit)="addAutor()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Cod autor
+          </mat-label>
+          <input matInput formControlName="codAutor" required>
+          <mat-error *ngIf="addAutorForm && addAutorForm.controls
+          && addAutorForm.controls['codAutor'] && addAutorForm.controls['codAutor'].touched
+          && addAutorForm.controls['codAutor'].invalid && addAutorForm.controls['codAutor'].errors">
+            <span *ngIf="addAutorForm.controls['codAutor'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addAutorForm.controls['codAutor'].errors['addAutorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Nume
+          </mat-label>
+          <input matInput formControlName="nume" required type="text">
+          <mat-error *ngIf="addAutorForm && addAutorForm.controls
+          && addAutorForm.controls['nume'] && addAutorForm.controls['nume'].touched
+          && addAutorForm.controls['nume'].invalid && addAutorForm.controls['nume'].errors">
+            <span *ngIf="addAutorForm.controls['nume'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addAutorForm.controls['nume'].errors['addAutorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Prenume
+          </mat-label>
+          <input matInput formControlName="prenume" required type="text">
+          <mat-error *ngIf="addAutorForm && addAutorForm.controls
+          && addAutorForm.controls['prenume'] && addAutorForm.controls['prenume'].touched
+          && addAutorForm.controls['prenume'].invalid && addAutorForm.controls['prenume'].errors">
+            <span *ngIf="addAutorForm.controls['prenume'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addAutorForm.controls['prenume'].errors['addAutorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Data nasterii
+          </mat-label>
+          <input matInput formControlName="dataN" type="date">
+          <mat-error *ngIf="addAutorForm && addAutorForm.controls
+          && addAutorForm.controls['dataN'] && addAutorForm.controls['dataN'].touched
+          && addAutorForm.controls['dataN'].invalid && addAutorForm.controls['dataN'].errors">
+            <span *ngIf="addAutorForm.controls['dataN'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addAutorForm.controls['dataN'].errors['addAutorForm']">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" type="submit" (click)="addAutor()">Save</button>
+</mat-dialog-actions>

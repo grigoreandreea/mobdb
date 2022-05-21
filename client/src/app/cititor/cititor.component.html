@@ -1,0 +1,95 @@
+<ng-container>
+  <div class="page-container">
+    <div class="title-add">
+      <h1 class="first-title">Cititor</h1>
+      <button mat-button color="primary" (click)="addCititor()">Adauga cititor</button>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> Cod cititor </th>
+        <td mat-cell *matCellDef="let element"> {{element.codCititor}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="serieLegitimatie">
+        <th mat-header-cell *matHeaderCellDef> Serie legitimatie </th>
+        <td mat-cell *matCellDef="let element"> {{element.serieLegitimatie}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="nume">
+        <th mat-header-cell *matHeaderCellDef> Nume </th>
+        <td mat-cell *matCellDef="let element"> {{element.nume}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="prenume">
+        <th mat-header-cell *matHeaderCellDef> Prenume </th>
+        <td mat-cell *matCellDef="let element"> {{element.prenume}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="gen">
+        <th mat-header-cell *matHeaderCellDef> Gen </th>
+        <td mat-cell *matCellDef="let element"> {{element.gen}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Data nasterii </th>
+        <td mat-cell *matCellDef="let element"> {{element.dataN}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="strNr">
+        <th mat-header-cell *matHeaderCellDef> Strada si numar </th>
+        <td mat-cell *matCellDef="let element"> {{element.strNr}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="localitate">
+        <th mat-header-cell *matHeaderCellDef> Localitatea </th>
+        <td mat-cell *matCellDef="let element"> {{element.localitate}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actiuni</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="d-flex align-items-center">
+            <div ngbDropdown container="body" class="actions-wrapper">
+              <div class="margin-right">
+                <a href="javascript: void(0);" (click)="editCititor(element)"
+                   class="text-primary cursor-pointer"
+                   placement="top" >
+                  <mat-icon aria-hidden="false">edit</mat-icon>
+                </a>
+              </div>
+              <div>
+                <a href="javascript: void(0);" (click)="deleteCititor(element)"
+                   class="text-primary cursor-pointer"
+                   placement="top" >
+                  <mat-icon aria-hidden="false">delete</mat-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</ng-container>
