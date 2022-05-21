@@ -5,6 +5,8 @@ import io.swagger.model.BIBLIOTECARITEM;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.List;
 
@@ -38,9 +40,12 @@ public class BibliotecarRepository {
 
     public BIBLIOTECARITEM addBibliotecar(BIBLIOTECARITEM bibliotecar) {
 
+        LocalDate formatedDate = LocalDate.parse(bibliotecar.getDataN());
+        String formattedDate = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+
         String sql = "insert into bibliotecar(cod_bibliotecar, nume, prenume, gen, data_n, str_nr, localitate) values(" +
                 bibliotecar.getCodBibliotecar() + ",'" +  bibliotecar.getNume() + "','" +  bibliotecar.getPrenume() + "','"
-                + bibliotecar.getGen() + "','" + bibliotecar.getDataN() + "','" + bibliotecar.getStrNr() + "','" + bibliotecar.getLocalitate() +  "')";
+                + bibliotecar.getGen() + "','" + formattedDate + "','" + bibliotecar.getStrNr() + "','" + bibliotecar.getLocalitate() +  "')";
 
         jdbcTemplate.execute(sql);
 
