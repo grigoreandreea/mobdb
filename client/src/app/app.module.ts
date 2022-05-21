@@ -18,6 +18,12 @@ import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dia
 import { AddBookComponent } from './book/add-book/add-book.component';
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import { AutorComponent } from './autor/autor.component';
+import { AddAutorComponent } from './autor/add-autor/add-autor.component';
+import { EditAutorComponent } from './autor/edit-autor/edit-autor.component';
+import { CititorComponent } from './cititor/cititor.component';
+import { AddCititorComponent } from './cititor/add-cititor/add-cititor.component';
+import { EditCititorComponent } from './cititor/edit-cititor/edit-cititor.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +32,12 @@ import {ReactiveFormsModule} from "@angular/forms";
     NavbarComponent,
     EditBookComponent,
     AddBookComponent,
+    AutorComponent,
+    AddAutorComponent,
+    EditAutorComponent,
+    CititorComponent,
+    AddCititorComponent,
+    EditCititorComponent,
   ],
   imports: [
     BrowserModule,

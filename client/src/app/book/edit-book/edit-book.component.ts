@@ -44,7 +44,6 @@ export class EditBookComponent implements OnInit {
 
   editBook() {
     const params: any = {
-      codCarte: this.selectedBookDetails.codCarte,
       codSubcategorie: this.editBookForm?.get('codSubcategorie')?.value,
       titlu: this.editBookForm?.get('titlu')?.value,
       nrExemplare: this.editBookForm?.get('nrExemplare')?.value,
