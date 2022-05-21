@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {CITITORITEM, DefaultService} from "../../swagger-generated";
 import {MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
-import {transformCamelCaseKeysToUnderscore} from "../../swagger-generated/api/helpers";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
@@ -22,12 +21,13 @@ export class AddCititorComponent implements OnInit {
 
   ngOnInit(): void {
     this.addCititorForm = this.formBuilder.group({
-      serieLegitimatie: [null, Validators.required],
+      cod_cititor: [null, Validators.required],
+      serie_legitimatie: [null, Validators.required],
       nume: [null, Validators.required],
       prenume: [null, Validators.required],
-      dataN: [null, Validators.required],
+      data_n: [null, Validators.required],
       gen: [null, Validators.required],
-      strNr: [null, Validators.required],
+      str_nr: [null, Validators.required],
       localitate: [null, Validators.required],
       email: [null, Validators.required]
     });
@@ -35,18 +35,18 @@ export class AddCititorComponent implements OnInit {
 
   addCititor() {
     const params: any = {
-      codAutor: this.addCititorForm?.get('codCititor')?.value,
-      serieLegitimatie: this.addCititorForm?.get('serieLegitimatie')?.value,
+      cod_cititor: this.addCititorForm?.get('cod_cititor')?.value,
+      serie_legitimatie: this.addCititorForm?.get('serie_legitimatie')?.value,
       nume: this.addCititorForm?.get('nume')?.value,
       prenume: this.addCititorForm?.get('prenume')?.value,
-      dataN: this.addCititorForm?.get('dataN')?.value,
-      srtNr: this.addCititorForm?.get('srtNr')?.value,
+      gen: this.addCititorForm?.get('gen')?.value,
+      data_n: this.addCititorForm?.get('data_n')?.value,
+      str_nr: this.addCititorForm?.get('str_nr')?.value,
       localitate: this.addCititorForm?.get('localitate')?.value,
       email: this.addCititorForm?.get('email')?.value
     };
-    const parsedParams = transformCamelCaseKeysToUnderscore(params);
     this.defaultService
-      .cititorPost(parsedParams)
+      .cititorPost(params)
       .subscribe({
         next: (data) => {
           this.onAddCititorSuccess(params);

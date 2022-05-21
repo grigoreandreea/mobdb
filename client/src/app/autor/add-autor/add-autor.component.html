@@ -6,12 +6,12 @@
         <mat-form-field class="form-field" appearance="outline">
           <mat-label> Cod autor
           </mat-label>
-          <input matInput formControlName="codAutor" required>
+          <input matInput formControlName="cod_autor" required>
           <mat-error *ngIf="addAutorForm && addAutorForm.controls
-          && addAutorForm.controls['codAutor'] && addAutorForm.controls['codAutor'].touched
-          && addAutorForm.controls['codAutor'].invalid && addAutorForm.controls['codAutor'].errors">
-            <span *ngIf="addAutorForm.controls['codAutor'].errors['required']">This field is mandatory.</span>
-            <span *ngIf="addAutorForm.controls['codAutor'].errors['addAutorForm']">This field is invalid.</span>
+          && addAutorForm.controls['cod_autor'] && addAutorForm.controls['cod_autor'].touched
+          && addAutorForm.controls['cod_autor'].invalid && addAutorForm.controls['cod_autor'].errors">
+            <span *ngIf="addAutorForm.controls['cod_autor'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addAutorForm.controls['cod_autor'].errors['addAutorForm']">This field is invalid.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="form-field" appearance="outline">
@@ -39,12 +39,12 @@
         <mat-form-field class="form-field" appearance="outline">
           <mat-label> Data nasterii
           </mat-label>
-          <input matInput formControlName="dataN" type="date">
+          <input matInput formControlName="data_n" type="date">
           <mat-error *ngIf="addAutorForm && addAutorForm.controls
-          && addAutorForm.controls['dataN'] && addAutorForm.controls['dataN'].touched
-          && addAutorForm.controls['dataN'].invalid && addAutorForm.controls['dataN'].errors">
-            <span *ngIf="addAutorForm.controls['dataN'].errors['required']">This field is mandatory.</span>
-            <span *ngIf="addAutorForm.controls['dataN'].errors['addAutorForm']">This field is invalid.</span>
+          && addAutorForm.controls['data_n'] && addAutorForm.controls['data_n'].touched
+          && addAutorForm.controls['data_n'].invalid && addAutorForm.controls['data_n'].errors">
+            <span *ngIf="addAutorForm.controls['data_n'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addAutorForm.controls['data_n'].errors['addAutorForm']">This field is invalid.</span>
           </mat-error>
         </mat-form-field>
       </form>

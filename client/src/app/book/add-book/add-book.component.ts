@@ -3,7 +3,6 @@ import {CARTEITEM, DefaultService} from "../../swagger-generated";
 import {MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
-import {transformCamelCaseKeysToUnderscore} from "../../swagger-generated/api/helpers";
 
 @Component({
   selector: 'app-add-book',
@@ -22,23 +21,22 @@ export class AddBookComponent implements OnInit {
 
   ngOnInit() {
     this.addBookForm = this.formBuilder.group({
-      codCarte: [null, [Validators.required]],
-      codSubcategorie: [null, [Validators.required]],
+      cod_carte: [null, [Validators.required]],
+      cod_subcategorie: [null, [Validators.required]],
       titlu: [null, Validators.required],
-      nrExemplare: [null, Validators.required]
+      nr_exemplare: [null, Validators.required]
     });
   }
 
   addBook() {
     const params: any = {
-      codCarte: this.addBookForm?.get('codCarte')?.value,
-      codSubcategorie: this.addBookForm?.get('codSubcategorie')?.value,
+      cod_carte: this.addBookForm?.get('cod_carte')?.value,
+      cod_subcategorie: this.addBookForm?.get('cod_subcategorie')?.value,
       titlu: this.addBookForm?.get('titlu')?.value,
-      nrExemplare: this.addBookForm?.get('nrExemplare')?.value,
+      nr_exemplare: this.addBookForm?.get('nr_exemplare')?.value,
     };
-    const parsedParams = transformCamelCaseKeysToUnderscore(params);
     this.defaultService
-      .cartePost(parsedParams)
+      .cartePost(params)
       .subscribe({
         next: (data) => {
           this.onAddBookSuccess(params);

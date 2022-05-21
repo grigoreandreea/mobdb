@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {CITITORITEM, DefaultService} from "../swagger-generated";
 import {MatDialog} from "@angular/material/dialog";
-import {transformCamelCaseKeysToUnderscore, transformUnderscoreKeysToCamelCase} from "../swagger-generated/api/helpers";
 import {AddCititorComponent} from "./add-cititor/add-cititor.component";
 import {EditCititorComponent} from "./edit-cititor/edit-cititor.component";
 
 const ELEMENT_DATA: CITITORITEM[] = [
-  // {codCititor: 1, serieLegitimatie: 'Poezii', nume: 'Eminescu', prenume: 'Mihai', gen: 'm', dataN: '2002-12-12 00:00:00', strNr: 'undeva 43', localitate: 'Bacau', email: 'popescu@user.com'},
-  // {codCititor: 2, serieLegitimatie: 'La Medeleni', nume: 'Eminescu', prenume: 'Mihai', gen: 'm', dataN: '2002-12-12 00:00:00', strNr: 'undeva 43', localitate: 'Bacau', email: 'popescu@user.com'},
+  // {cod_cititor: 1, serie_legitimatie: 'Poezii', nume: 'Eminescu', prenume: 'Mihai', gen: 'm', data_n: '2002-12-12 00:00:00', str_nr: 'undeva 43', localitate: 'Bacau', email: 'popescu@user.com'},
+  // {cod_cititor: 2, serie_legitimatie: 'La Medeleni', nume: 'Eminescu', prenume: 'Mihai', gen: 'm', data_n: '2002-12-12 00:00:00', str_nr: 'undeva 43', localitate: 'Bacau', email: 'popescu@user.com'},
 ];
 
 @Component({
@@ -17,7 +16,7 @@ const ELEMENT_DATA: CITITORITEM[] = [
 })
 export class CititorComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'serieLegitimatie', 'nume', 'prenume', 'gen', 'date', 'strNr', 'localitate', 'email', 'actions'];
+  displayedColumns: string[] = ['position', 'serie_legitimatie', 'nume', 'prenume', 'gen', 'date', 'str_nr', 'localitate', 'email', 'actions'];
   dataSource = ELEMENT_DATA;
 
   constructor(
@@ -27,8 +26,10 @@ export class CititorComponent implements OnInit {
 
   ngOnInit(): void {
     this.defaultService.cititorGet().subscribe((response) => {
-      this.dataSource = response.map(e => transformUnderscoreKeysToCamelCase(e));
-    });
+      this.dataSource = response.map(e => {
+        const cititor: CITITORITEM = e;
+        return cititor;
+      });    });
   }
 
   public addCititor() {
@@ -47,16 +48,15 @@ export class CititorComponent implements OnInit {
     modalRef.afterClosed().subscribe((response) => {
       console.log('edit response: ', response);
       if (response) {
-        this.dataSource = this.dataSource.map(e => e.codCititor === response.codCititor ? response : e)
+        this.dataSource = this.dataSource.map(e => e.cod_cititor === response.cod_cititor ? response : e)
       }
     });
   }
 
   public deleteCititor(cititor: CITITORITEM) {
-    const parsedCititor = transformCamelCaseKeysToUnderscore(cititor);
-    this.defaultService.cititorIdDelete('' + parsedCititor.cod_cititor)
+    this.defaultService.cititorIdDelete('' + cititor.cod_cititor)
       .subscribe(() => {
-        this.dataSource = this.dataSource.filter(e => e.codCititor !== cititor.codCititor);
+        this.dataSource = this.dataSource.filter(e => e.cod_cititor !== cititor.cod_cititor);
       });
   }
 }

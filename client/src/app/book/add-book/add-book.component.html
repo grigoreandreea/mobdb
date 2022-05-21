@@ -6,23 +6,23 @@
         <mat-form-field class="form-field" appearance="outline">
           <mat-label> Cod carte
           </mat-label>
-          <input matInput formControlName="codCarte" required>
+          <input matInput formControlName="cod_carte" required>
           <mat-error *ngIf="addBookForm && addBookForm.controls
-          && addBookForm.controls['codCarte'] && addBookForm.controls['codCarte'].touched
-          && addBookForm.controls['codCarte'].invalid && addBookForm.controls['codCarte'].errors">
-            <span *ngIf="addBookForm.controls['codCarte'].errors['required']">This field is mandatory.</span>
-            <span *ngIf="addBookForm.controls['codCarte'].errors['addBookForm']">This field is invalid.</span>
+          && addBookForm.controls['cod_carte'] && addBookForm.controls['cod_carte'].touched
+          && addBookForm.controls['cod_carte'].invalid && addBookForm.controls['cod_carte'].errors">
+            <span *ngIf="addBookForm.controls['cod_carte'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBookForm.controls['cod_carte'].errors['addBookForm']">This field is invalid.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="form-field" appearance="outline">
           <mat-label> Subcategorie
           </mat-label>
-          <input matInput formControlName="codSubcategorie" required>
+          <input matInput formControlName="cod_subcategorie" required>
           <mat-error *ngIf="addBookForm && addBookForm.controls
-          && addBookForm.controls['codSubcategorie'] && addBookForm.controls['codSubcategorie'].touched
-          && addBookForm.controls['codSubcategorie'].invalid && addBookForm.controls['codSubcategorie'].errors">
-            <span *ngIf="addBookForm.controls['codSubcategorie'].errors['required']">This field is mandatory.</span>
-            <span *ngIf="addBookForm.controls['codSubcategorie'].errors['addBookForm']">This field is invalid.</span>
+          && addBookForm.controls['cod_subcategorie'] && addBookForm.controls['cod_subcategorie'].touched
+          && addBookForm.controls['cod_subcategorie'].invalid && addBookForm.controls['cod_subcategorie'].errors">
+            <span *ngIf="addBookForm.controls['cod_subcategorie'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBookForm.controls['cod_subcategorie'].errors['addBookForm']">This field is invalid.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="form-field" appearance="outline">
@@ -39,12 +39,12 @@
         <mat-form-field class="form-field" appearance="outline">
           <mat-label> Numar exemplare
           </mat-label>
-          <input matInput formControlName="nrExemplare" type="number">
+          <input matInput formControlName="nr_exemplare" type="number">
           <mat-error *ngIf="addBookForm && addBookForm.controls
-          && addBookForm.controls['nrExemplare'] && addBookForm.controls['nrExemplare'].touched
-          && addBookForm.controls['nrExemplare'].invalid && addBookForm.controls['nrExemplare'].errors">
-            <span *ngIf="addBookForm.controls['nrExemplare'].errors['required']">This field is mandatory.</span>
-            <span *ngIf="addBookForm.controls['nrExemplare'].errors['addBookForm']">This field is invalid.</span>
+          && addBookForm.controls['nr_exemplare'] && addBookForm.controls['nr_exemplare'].touched
+          && addBookForm.controls['nr_exemplare'].invalid && addBookForm.controls['nr_exemplare'].errors">
+            <span *ngIf="addBookForm.controls['nr_exemplare'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="addBookForm.controls['nr_exemplare'].errors['addBookForm']">This field is invalid.</span>
           </mat-error>
         </mat-form-field>
       </form>

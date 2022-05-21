@@ -42,8 +42,12 @@ public class AutorRepository {
 
     public AUTORITEM addAuthor(AUTORITEM autor) {
 
+        LocalDate formatedDate = LocalDate.parse(autor.getDataN());
+
+        String formattedDate = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+
         String sql = "INSERT INTO autor(cod_autor, nume, prenume, data_n) VALUES (?, ?, ?, ?)";
-        Object[] params = new Object[] {autor.getCodAutor(), autor.getNume(),  autor.getPrenume(), autor.getDataN()};
+        Object[] params = new Object[] {autor.getCodAutor(), autor.getNume(),  autor.getPrenume(), formattedDate};
 
         jdbcTemplate.update(sql, params);
         return autor;
@@ -51,9 +55,11 @@ public class AutorRepository {
 
 
     public AUTORITEM updateAuthor(String id, AUTORITEM autor) {
+        LocalDate formatedDate = LocalDate.parse(autor.getDataN());
 
+        String formattedDate = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
         String SQL = "update autor set nume = ?, prenume = ?, data_n = ? where cod_autor = ?";
-        jdbcTemplate.update(SQL, autor.getNume(), autor.getPrenume(), autor.getDataN(), id);
+        jdbcTemplate.update(SQL, autor.getNume(), autor.getPrenume(), formattedDate, id);
 
         return autor;
     }

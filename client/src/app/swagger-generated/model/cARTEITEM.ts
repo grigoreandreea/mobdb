@@ -14,8 +14,8 @@ import { VARCHAR2 } from './vARCHAR2';
 
 
 export interface CARTEITEM { 
-    codCarte?: NUMBER;
-    codSubcategorie?: NUMBER;
+    cod_carte?: NUMBER;
+    cod_subcategorie?: NUMBER;
     titlu?: VARCHAR2;
-    nrExemplare?: NUMBER;
+    nr_exemplare?: NUMBER;
 }

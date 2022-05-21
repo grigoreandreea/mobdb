@@ -14,8 +14,8 @@ import { NUMBER } from './nUMBER';
 
 
 export interface IMPRUMUTAITEM { 
-    codCititor?: NUMBER;
-    codCarte?: NUMBER;
+    cod_cititor?: NUMBER;
+    cod_carte?: NUMBER;
     dataImprumut?: DATE;
     termenLimita?: DATE;
     dataRestituire?: DATE;

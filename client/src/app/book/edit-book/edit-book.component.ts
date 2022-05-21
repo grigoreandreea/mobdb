@@ -3,7 +3,6 @@ import {CARTEITEM, DefaultService} from "../../swagger-generated";
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatDialogRef} from "@angular/material/dialog";
-import {transformCamelCaseKeysToUnderscore} from "../../swagger-generated/api/helpers";
 
 @Component({
   selector: 'app-edit-book',
@@ -13,9 +12,9 @@ import {transformCamelCaseKeysToUnderscore} from "../../swagger-generated/api/he
 export class EditBookComponent implements OnInit {
 
   @Input() selectedBookDetails: CARTEITEM = {
-    codCarte: 0,
-    codSubcategorie: 0,
-    nrExemplare: 0,
+    cod_carte: 0,
+    cod_subcategorie: 0,
+    nr_exemplare: 0,
     titlu: ''
   };
   public editBookForm: any;
@@ -28,29 +27,28 @@ export class EditBookComponent implements OnInit {
 
   ngOnInit() {
     this.editBookForm = this.formBuilder.group({
-      codSubcategorie: [null, [Validators.required]],
+      cod_subcategorie: [null, [Validators.required]],
       titlu: [null, Validators.required],
-      nrExemplare: [null, Validators.required]
+      nr_exemplare: [null, Validators.required]
     });
 
     if (this.selectedBookDetails) {
       this.editBookForm?.patchValue({
-        codSubcategorie: this.selectedBookDetails.codSubcategorie,
+        cod_subcategorie: this.selectedBookDetails.cod_subcategorie,
         titlu: this.selectedBookDetails.titlu,
-        nrExemplare: this.selectedBookDetails.nrExemplare,
+        nr_exemplare: this.selectedBookDetails.nr_exemplare,
       });
     }
   }
 
   editBook() {
     const params: any = {
-      codSubcategorie: this.editBookForm?.get('codSubcategorie')?.value,
+      cod_subcategorie: this.editBookForm?.get('cod_subcategorie')?.value,
       titlu: this.editBookForm?.get('titlu')?.value,
-      nrExemplare: this.editBookForm?.get('nrExemplare')?.value,
+      nr_exemplare: this.editBookForm?.get('nr_exemplare')?.value,
     };
-    const parsedParams = transformCamelCaseKeysToUnderscore(params);
     this.defaultService
-      .carteIdPut('' + this.selectedBookDetails?.codCarte, parsedParams)
+      .carteIdPut('' + this.selectedBookDetails?.cod_carte, params)
       .subscribe({
         next: (data) => {
           this.onEditBookSuccess(params);

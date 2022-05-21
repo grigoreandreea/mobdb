@@ -15,7 +15,7 @@ import { NUMBER } from './nUMBER';
 
 export interface DONEAZAITEM { 
     codDonator?: NUMBER;
-    codCarte?: NUMBER;
+    cod_carte?: NUMBER;
     dataDonarii?: DATE;
-    nrExemplare?: NUMBER;
+    nr_exemplare?: NUMBER;
 }

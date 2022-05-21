@@ -6,12 +6,12 @@
         <mat-form-field class="form-field" appearance="outline">
           <mat-label> Serie legitimatie
           </mat-label>
-          <input matInput formControlName="serieLegitimatie" required type="text">
+          <input matInput formControlName="serie_legitimatie" required type="text">
           <mat-error *ngIf="editCititorForm && editCititorForm.controls
-          && editCititorForm.controls['serieLegitimatie'] && editCititorForm.controls['serieLegitimatie'].touched
-          && editCititorForm.controls['serieLegitimatie'].invalid && editCititorForm.controls['serieLegitimatie'].errors">
-            <span *ngIf="editCititorForm.controls['serieLegitimatie'].errors['required']">This field is mandatory.</span>
-            <span *ngIf="editCititorForm.controls['serieLegitimatie'].errors['editCititorForm']">This field is invalid.</span>
+          && editCititorForm.controls['serie_legitimatie'] && editCititorForm.controls['serie_legitimatie'].touched
+          && editCititorForm.controls['serie_legitimatie'].invalid && editCititorForm.controls['serie_legitimatie'].errors">
+            <span *ngIf="editCititorForm.controls['serie_legitimatie'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="editCititorForm.controls['serie_legitimatie'].errors['editCititorForm']">This field is invalid.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="form-field" appearance="outline">
@@ -52,23 +52,23 @@
         <mat-form-field class="form-field" appearance="outline">
           <mat-label> Data nasterii
           </mat-label>
-          <input matInput formControlName="dataN" type="date">
+          <input matInput formControlName="data_n" type="date">
           <mat-error *ngIf="editCititorForm && editCititorForm.controls
-          && editCititorForm.controls['dataN'] && editCititorForm.controls['dataN'].touched
-          && editCititorForm.controls['dataN'].invalid && editCititorForm.controls['dataN'].errors">
-            <span *ngIf="editCititorForm.controls['dataN'].errors['required']">This field is mandatory.</span>
-            <span *ngIf="editCititorForm.controls['dataN'].errors['editCititorForm']">This field is invalid.</span>
+          && editCititorForm.controls['data_n'] && editCititorForm.controls['data_n'].touched
+          && editCititorForm.controls['data_n'].invalid && editCititorForm.controls['data_n'].errors">
+            <span *ngIf="editCititorForm.controls['data_n'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="editCititorForm.controls['data_n'].errors['editCititorForm']">This field is invalid.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="form-field" appearance="outline">
           <mat-label> Strada si numar
           </mat-label>
-          <input matInput formControlName="strNr" required type="text">
+          <input matInput formControlName="str_nr" required type="text">
           <mat-error *ngIf="editCititorForm && editCititorForm.controls
-          && editCititorForm.controls['strNr'] && editCititorForm.controls['strNr'].touched
-          && editCititorForm.controls['strNr'].invalid && editCititorForm.controls['strNr'].errors">
-            <span *ngIf="editCititorForm.controls['strNr'].errors['required']">This field is mandatory.</span>
-            <span *ngIf="editCititorForm.controls['strNr'].errors['editCititorForm']">This field is invalid.</span>
+          && editCititorForm.controls['str_nr'] && editCititorForm.controls['str_nr'].touched
+          && editCititorForm.controls['str_nr'].invalid && editCititorForm.controls['str_nr'].errors">
+            <span *ngIf="editCititorForm.controls['str_nr'].errors['required']">This field is mandatory.</span>
+            <span *ngIf="editCititorForm.controls['str_nr'].errors['editCititorForm']">This field is invalid.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="form-field" appearance="outline">

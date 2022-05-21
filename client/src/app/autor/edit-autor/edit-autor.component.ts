@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AUTORITEM, DefaultService} from "../../swagger-generated";
 import {MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
-import {transformCamelCaseKeysToUnderscore} from "../../swagger-generated/api/helpers";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
@@ -12,10 +11,10 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class EditAutorComponent implements OnInit {
   @Input() selectedAutorDetails: AUTORITEM = {
-    codAutor: 0,
+    cod_autor: 0,
     nume: '',
     prenume: '',
-    // dataN: '0000-00-00 00:00:00'
+    // data_n: '0000-00-00 00:00:00'
   };
   public editAutorForm: any;
 
@@ -29,14 +28,14 @@ export class EditAutorComponent implements OnInit {
     this.editAutorForm = this.formBuilder.group({
       nume: [null, Validators.required],
       prenume: [null, Validators.required],
-      dataN: [null, Validators.required]
+      data_n: [null, Validators.required]
     });
 
     if (this.selectedAutorDetails) {
       this.editAutorForm?.patchValue({
         nume: this.selectedAutorDetails.nume,
         prenume: this.selectedAutorDetails.prenume,
-        dataN: this.selectedAutorDetails.dataN
+        data_n: this.selectedAutorDetails.data_n
       });
     }
   }
@@ -45,11 +44,10 @@ export class EditAutorComponent implements OnInit {
     const params: any = {
       nume: this.editAutorForm?.get('nume')?.value,
       prenume: this.editAutorForm?.get('prenume')?.value,
-      dataN: this.editAutorForm?.get('dataN')?.value,
+      data_n: this.editAutorForm?.get('data_n')?.value,
     };
-    const parsedParams = transformCamelCaseKeysToUnderscore(params);
     this.defaultService
-      .autorIdPut('' + this.selectedAutorDetails?.codAutor, params)
+      .autorIdPut('' + this.selectedAutorDetails?.cod_autor, params)
       .subscribe({
         next: (data) => {
           this.onEditAutorSuccess(params);

@@ -15,7 +15,7 @@ import { NUMBER } from './nUMBER';
 
 export interface FORMATADINITEM { 
     codComanda?: NUMBER;
-    codCarte?: NUMBER;
-    nrExemplare?: NUMBER;
+    cod_carte?: NUMBER;
+    nr_exemplare?: NUMBER;
     pretUnitar?: ModelFLOAT;
 }

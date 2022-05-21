@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {EditBookComponent} from "./edit-book/edit-book.component";
-import {CARTEITEM, DefaultService} from "../swagger-generated";
-import {AddBookComponent} from "./add-book/add-book.component";
-import {transformCamelCaseKeysToUnderscore, transformUnderscoreKeysToCamelCase} from "../swagger-generated/api/helpers";
+import { MatDialog } from "@angular/material/dialog";
+import { EditBookComponent } from "./edit-book/edit-book.component";
+import { CARTEITEM, DefaultService } from "../swagger-generated";
+import { AddBookComponent } from "./add-book/add-book.component";
 
 const ELEMENT_DATA: CARTEITEM[] = [
-  {codCarte: 1, titlu: 'Poezii', codSubcategorie: 1, nrExemplare: 4},
-  {codCarte: 2, titlu: 'La Medeleni', codSubcategorie: 2, nrExemplare: 1},
+  { cod_carte: 1, titlu: 'Poezii', cod_subcategorie: 1, nr_exemplare: 4 },
+  { cod_carte: 2, titlu: 'La Medeleni', cod_subcategorie: 2, nr_exemplare: 1 },
 ];
 
 @Component({
@@ -16,7 +15,7 @@ const ELEMENT_DATA: CARTEITEM[] = [
   styleUrls: ['./book.component.scss']
 })
 export class BookComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'title', 'subcategory', 'nrExemplare', 'actions'];
+  displayedColumns: string[] = ['position', 'title', 'subcategory', 'nr_exemplare', 'actions'];
   dataSource = ELEMENT_DATA;
 
   constructor(
@@ -26,7 +25,10 @@ export class BookComponent implements OnInit {
 
   ngOnInit(): void {
     this.defaultService.carteGet().subscribe((response) => {
-      this.dataSource = response.map(e => transformUnderscoreKeysToCamelCase(e));
+      this.dataSource = response.map(e => {
+        const book: CARTEITEM = e;
+        return book;
+      });
     });
   }
 
@@ -46,16 +48,15 @@ export class BookComponent implements OnInit {
     modalRef.afterClosed().subscribe((response) => {
       console.log('edit response: ', response);
       if (response) {
-        this.dataSource = this.dataSource.map(e => e.codCarte === response.codCarte ? response : e);
+        this.dataSource = this.dataSource.map(e => e.cod_carte === response.cod_carte ? response : e);
       }
     });
   }
 
   public deleteBook(book: CARTEITEM) {
-    const parsedBook = transformCamelCaseKeysToUnderscore(book);
-    this.defaultService.carteIdDelete('' + parsedBook.cod_carte)
+    this.defaultService.carteIdDelete('' + book.cod_carte)
       .subscribe(() => {
-        this.dataSource = this.dataSource.filter(e => e.codCarte !== book.codCarte);
+        this.dataSource = this.dataSource.filter(e => e.cod_carte !== book.cod_carte);
       });
   }
 

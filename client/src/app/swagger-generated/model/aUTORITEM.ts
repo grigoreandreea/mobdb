@@ -15,8 +15,8 @@ import { VARCHAR2 } from './vARCHAR2';
 
 
 export interface AUTORITEM { 
-    codAutor?: NUMBER;
+    cod_autor?: NUMBER;
     nume?: VARCHAR2;
     prenume?: VARCHAR2;
-    dataN?: DATE;
+    data_n?: DATE;
 }

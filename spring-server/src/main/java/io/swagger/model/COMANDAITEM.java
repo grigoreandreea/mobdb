@@ -110,7 +110,7 @@ public class COMANDAITEM   {
   **/
   @ApiModelProperty(value = "")
 
-@Pattern(regexp="^(([0-9])|([0-2][0-9])|([3][0-1]))\\-(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\\-\\d{2}$")
+@Pattern(regexp="^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$")
   public String getDataPlasare() {
     return dataPlasare;
   }

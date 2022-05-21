@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {AUTORITEM, DefaultService} from "../../swagger-generated";
 import {MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
-import {transformCamelCaseKeysToUnderscore} from "../../swagger-generated/api/helpers";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
@@ -22,23 +21,22 @@ export class AddAutorComponent implements OnInit {
 
   ngOnInit(): void {
     this.addAutorForm = this.formBuilder.group({
-      codAutor: [null, [Validators.required]],
+      cod_autor: [null, [Validators.required]],
       nume: [null, [Validators.required]],
       prenume: [null, Validators.required],
-      dataN: [null, Validators.required]
+      data_n: [null, Validators.required]
     });
   }
 
   addAutor() {
     const params: any = {
-      codAutor: this.addAutorForm?.get('codAutor')?.value,
+      cod_autor: this.addAutorForm?.get('cod_autor')?.value,
       nume: this.addAutorForm?.get('nume')?.value,
       prenume: this.addAutorForm?.get('prenume')?.value,
-      dataN: this.addAutorForm?.get('dataN')?.value,
+      data_n: this.addAutorForm?.get('data_n')?.value,
     };
-    const parsedParams = transformCamelCaseKeysToUnderscore(params);
     this.defaultService
-      .autorPost(parsedParams)
+      .autorPost(params)
       .subscribe({
         next: (data) => {
           this.onAddAutorSuccess(params);

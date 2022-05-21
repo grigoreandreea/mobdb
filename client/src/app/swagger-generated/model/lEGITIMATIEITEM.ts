@@ -14,6 +14,6 @@ import { VARCHAR2 } from './vARCHAR2';
 
 
 export interface LEGITIMATIEITEM { 
-    serieLegitimatie?: VARCHAR2;
+    serie_legitimatie?: VARCHAR2;
     dataExpirare?: DATE;
 }

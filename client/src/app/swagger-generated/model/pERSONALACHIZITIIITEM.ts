@@ -19,7 +19,7 @@ export interface PERSONALACHIZITIIITEM {
     nume?: VARCHAR2;
     prenume?: VARCHAR2;
     gen?: VARCHAR2;
-    dataN?: DATE;
-    strNr?: VARCHAR2;
+    data_n?: DATE;
+    str_nr?: VARCHAR2;
     localitate?: VARCHAR2;
 }

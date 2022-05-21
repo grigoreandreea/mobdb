@@ -21,18 +21,18 @@ public class Config {
 //                return dataSourceOltpmodbd();
             if(url.contains("globalmodbd"))
                 return dataSourceGlobalmodbd();
-//            if(url.contains("remotele"))
-//                return dataSourceRemotele();
-//            if(url.contains("remoteda"))
-//                return dataSourceRemoteda();
+            if(url.contains("remotele"))
+                return dataSourceRemotele();
+            if(url.contains("remoteda"))
+                return dataSourceRemoteda();
             return  dataSourceOltpmodbd();
     }
 
     public DataSource dataSourceOltpmodbd() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.url("jdbc:oracle:thin:@localhost:1521:oltpmodbd");
-        dataSourceBuilder.username("system");
-        dataSourceBuilder.password("blueroot");
+        dataSourceBuilder.username("oltp_modbd");
+        dataSourceBuilder.password("blue");
         return dataSourceBuilder.build();
     }
 
@@ -42,34 +42,26 @@ public class Config {
         dataSourceBuilder.username("global_modbd");
         dataSourceBuilder.password("blue");
         return dataSourceBuilder.build();
+
     }
-//    @Bean(name = "oltpmodbd")
-//    @ConfigurationProperties("oltpmodbd.db")
-//    @Primary
-//    public DataSource dataSourceOltpmodbd(){
-//        return DataSourceBuilder.create().build();
-//    }
-//
-//    @Bean(name = "globalmodbd")
-//    @ConfigurationProperties("globalmodbd.datasource")
-//    public DataSource dataSourceGlobalmodbd(){
-//        return DataSourceBuilder.create().build();
-//    }
-//
-//
-//    @Bean(name = "remotele")
-//    @ConfigurationProperties("remotele.datasource")
-//    public DataSource dataSourceRemotele(){
-//        return DataSourceBuilder.create().build();
-//    }
-//
-//
-//    @Bean(name = "remoteda")
-//    @ConfigurationProperties("remoteda.datasource")
-//    public DataSource dataSourceRemoteda(){
-//        return DataSourceBuilder.create().build();
-//    }
-//
+
+    public DataSource dataSourceRemotele() {
+        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+        dataSourceBuilder.url("jdbc:oracle:thin:@localhost:1521:remotele");
+        dataSourceBuilder.username("remote_le");
+        dataSourceBuilder.password("blue");
+        return dataSourceBuilder.build();
+
+    }
+
+    public DataSource dataSourceRemoteda() {
+        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+        dataSourceBuilder.url("jdbc:oracle:thin:@localhost:1521:remoteda");
+        dataSourceBuilder.username("remote_da");
+        dataSourceBuilder.password("blue");
+        return dataSourceBuilder.build();
+    }
+
     @Bean
     public void setRepository(String url) {
         this.jdbcTemplate = new JdbcTemplate(getDataSource(url));

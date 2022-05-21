@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CITITORITEM, DefaultService} from "../../swagger-generated";
 import {MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
-import {transformCamelCaseKeysToUnderscore} from "../../swagger-generated/api/helpers";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
@@ -13,13 +12,13 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class EditCititorComponent implements OnInit {
 
   @Input() selectedCititorDetails: CITITORITEM = {
-    codCititor: 0,
-    serieLegitimatie: '',
+    cod_cititor: 0,
+    serie_legitimatie: '',
     nume: '',
     prenume: '',
     gen: '',
-    // dataN: '0000-00-00 00:00:00',
-    strNr: '',
+    // data_n: '0000-00-00 00:00:00',
+    str_nr: '',
     localitate: '',
     email: ''
   };
@@ -33,24 +32,24 @@ export class EditCititorComponent implements OnInit {
 
   ngOnInit(): void {
     this.editCititorForm = this.formBuilder.group({
-      serieLegitimatie: [null, Validators.required],
+      serie_legitimatie: [null, Validators.required],
       nume: [null, Validators.required],
       prenume: [null, Validators.required],
-      dataN: [null, Validators.required],
+      data_n: [null, Validators.required],
       gen: [null, Validators.required],
-      strNr: [null, Validators.required],
+      str_nr: [null, Validators.required],
       localitate: [null, Validators.required],
       email: [null, Validators.required]
     });
 
     if (this.selectedCititorDetails) {
       this.editCititorForm?.patchValue({
-        serieLegitimatie: this.selectedCititorDetails.serieLegitimatie,
+        serie_legitimatie: this.selectedCititorDetails.serie_legitimatie,
         nume: this.selectedCititorDetails.nume,
         prenume: this.selectedCititorDetails.prenume,
         gen: this.selectedCititorDetails.gen,
-        dataN: this.selectedCititorDetails.dataN,
-        srtNr: this.selectedCititorDetails.strNr,
+        data_n: this.selectedCititorDetails.data_n,
+        str_nr: this.selectedCititorDetails.str_nr,
         localitate: this.selectedCititorDetails.localitate,
         email: this.selectedCititorDetails.email
       });
@@ -59,18 +58,17 @@ export class EditCititorComponent implements OnInit {
 
   editCititor() {
     const params: any = {
-      serieLegitimatie: this.editCititorForm?.get('serieLegitimatie')?.value,
+      serie_legitimatie: this.editCititorForm?.get('serie_legitimatie')?.value,
       nume: this.editCititorForm?.get('nume')?.value,
       prenume: this.editCititorForm?.get('prenume')?.value,
       gen: this.editCititorForm?.get('gen')?.value,
-      dataN: this.editCititorForm?.get('dataN')?.value,
-      srtNr: this.editCititorForm?.get('srtNr')?.value,
+      data_n: this.editCititorForm?.get('data_n')?.value,
+      str_nr: this.editCititorForm?.get('str_nr')?.value,
       localitate: this.editCititorForm?.get('localitate')?.value,
       email: this.editCititorForm?.get('email')?.value
     };
-    const parsedParams = transformCamelCaseKeysToUnderscore(params);
     this.defaultService
-      .cititorIdPut('' + this.selectedCititorDetails?.codCititor, parsedParams)
+      .cititorIdPut('' + this.selectedCititorDetails?.cod_cititor, params)
       .subscribe({
         next: (data) => {
           this.onEditCititorSuccess(params);
