@@ -54,8 +54,11 @@ public class BibliotecarRepository {
 
     public BIBLIOTECARITEM updateBibliotecar(String id, BIBLIOTECARITEM bibliotecar) {
 
+        LocalDate formatedDate = LocalDate.parse(bibliotecar.getDataN());
+        String formattedDate = formatedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+
         String SQL = "update bibliotecar set nume = ?, prenume = ?, gen = ?, data_n = ?, str_nr = ?, localitate = ?  where cod_bibliotecar = ?";
-        jdbcTemplate.update(SQL, bibliotecar.getNume(), bibliotecar.getPrenume(), bibliotecar.getGen(), bibliotecar.getDataN(), bibliotecar.getStrNr(), bibliotecar.getLocalitate(), id);
+        jdbcTemplate.update(SQL, bibliotecar.getNume(), bibliotecar.getPrenume(), bibliotecar.getGen(), formattedDate, bibliotecar.getStrNr(), bibliotecar.getLocalitate(), id);
 
         return bibliotecar;
     }
