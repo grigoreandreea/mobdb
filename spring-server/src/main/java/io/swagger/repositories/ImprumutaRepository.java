@@ -1,6 +1,7 @@
 package io.swagger.repositories;
 
 
+import io.swagger.model.CARTEITEM;
 import io.swagger.model.IMPRUMUTAITEM;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -29,6 +30,16 @@ public class ImprumutaRepository {
 
         return imprumuturi;
     }
+
+    public List<IMPRUMUTAITEM> getCartiImprumtateDe(String cod_cititor){
+        String sql = "SELECT * FROM imprumuta where cod_cititor = " + cod_cititor;
+
+        List<IMPRUMUTAITEM> carti = jdbcTemplate.query(sql,
+                BeanPropertyRowMapper.newInstance(IMPRUMUTAITEM.class));
+
+        return carti;
+    }
+    
 
     public List<IMPRUMUTAITEM> getImprumuta(String id){
         String sql = "SELECT * FROM imprumuta where cod_cititor = " + id;

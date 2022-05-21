@@ -37,14 +37,23 @@ public interface ImprumutaApi {
         method = RequestMethod.POST)
     ResponseEntity<String> imprumutaBatchloadPost(@PathVariable("db") String db, @ApiParam(value = "" ,required=true )  @Valid @RequestBody Object payload);
 
+    @ApiOperation(value = "", nickname = "cartiImprumutateDe", notes = "Retrieve records from IMPRUMUTA", response = Object.class, tags={  })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The queried record.", response = Object.class) })
+    @RequestMapping(value = "/imprumuta/cartiImprumutateDe/{id}",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    ResponseEntity<Object> getCartiImprumtateDe(@PathVariable("db") String db, @PathVariable("id") String id);
+
 
     @ApiOperation(value = "", nickname = "imprumutaGet", notes = "Retrieve records from IMPRUMUTA", response = Object.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "The queried record.", response = Object.class) })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The queried record.", response = Object.class) })
     @RequestMapping(value = "/imprumuta",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
+            produces = { "application/json" },
+            method = RequestMethod.GET)
     ResponseEntity<Object> imprumutaGet(@PathVariable("db") String db);
+
 
 
     @ApiOperation(value = "", nickname = "imprumutaIdDelete", notes = "Remove a record from IMPRUMUTA", response = IMPRUMUTAITEM.class, tags={  })

@@ -73,6 +73,24 @@ public class ImprumutaApiController implements ImprumutaApi {
         return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
     }
 
+    public ResponseEntity<Object> getCartiImprumtateDe(@PathVariable("db") String db, @PathVariable("id") String id) {
+        String accept = request.getHeader("Accept");
+
+        Config config = new Config();
+        config.setRepository( request.getRequestURL().toString() );
+        imprumutaRepository = new ImprumutaRepository(config.getJdbcTemplate());
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity(imprumutaRepository.getCartiImprumtateDe(id), HttpStatus.OK);
+            } catch (Exception e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
     public ResponseEntity<IMPRUMUTAITEM> imprumutaIdDelete(@PathVariable("db") String db, @Pattern(regexp="^[^/]+$") @ApiParam(value = "implicit",required=true) @PathVariable("id") String id) {
        String accept = request.getHeader("Accept");
 

@@ -149,1775 +149,1809 @@
         ]
       }
     },
-    "/carte": {
-      "get": {
-        "description": "Retrieve records from CARTE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
+  "/carte": {
+    "get": {
+      "description": "Retrieve records from CARTE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The queried record.",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
                 "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/CARTE_ITEM"
-                  }
+                  "$ref": "#/definitions/CARTE_ITEM"
                 }
               }
             }
           }
         }
-      },
-      "post": {
-        "description": "Create a new record on CARTE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/CARTE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CARTE_ITEM"
-            }
-          }
-        ]
       }
     },
-    "/carte/{id}": {
-      "delete": {
-        "description": "Remove a record from CARTE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/CARTE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from CARTE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/CARTE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on CARTE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/CARTE_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/CARTE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CARTE_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/categorie": {
-      "get": {
-        "description": "Retrieve records from CATEGORIE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/CATEGORIE_ITEM"
-                  }
-                }
-              }
-            }
+    "post": {
+      "description": "Create a new record on CARTE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "201": {
+          "description": "The successfully created record.",
+          "schema": {
+            "$ref": "#/definitions/CARTE_ITEM"
           }
         }
       },
-      "post": {
-        "description": "Create a new record on CATEGORIE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/CATEGORIE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CATEGORIE_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/categorie/{id}": {
-      "delete": {
-        "description": "Remove a record from CATEGORIE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/CATEGORIE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from CATEGORIE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/CATEGORIE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on CATEGORIE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/CATEGORIE_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/CATEGORIE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CATEGORIE_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/legitimatie": {
-      "get": {
-        "description": "Retrieve records from LEGITIMATIE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/LEGITIMATIE_ITEM"
-                  }
-                }
-              }
-            }
+      "parameters": [
+        {
+          "name": "payload",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CARTE_ITEM"
           }
         }
-      },
-      "post": {
-        "description": "Create a new record on LEGITIMATIE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/LEGITIMATIE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/LEGITIMATIE_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/legitimatie/{id}": {
-      "delete": {
-        "description": "Remove a record from LEGITIMATIE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/LEGITIMATIE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from LEGITIMATIE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/LEGITIMATIE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on LEGITIMATIE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/LEGITIMATIE_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/LEGITIMATIE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/LEGITIMATIE_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/cititor": {
-      "get": {
-        "description": "Retrieve records from CITITOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/CITITOR_ITEM"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Create a new record on CITITOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/CITITOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CITITOR_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/cititor/{id}": {
-      "delete": {
-        "description": "Remove a record from CITITOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/CITITOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from CITITOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/CITITOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on CITITOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/CITITOR_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/CITITOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CITITOR_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/imprumuta": {
-      "get": {
-        "description": "Retrieve records from IMPRUMUTA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/IMPRUMUTA_ITEM"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Create a new record on IMPRUMUTA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/IMPRUMUTA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/IMPRUMUTA_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/imprumuta/{id}": {
-      "delete": {
-        "description": "Remove a record from IMPRUMUTA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/IMPRUMUTA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from IMPRUMUTA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/IMPRUMUTA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on IMPRUMUTA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/IMPRUMUTA_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/IMPRUMUTA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/IMPRUMUTA_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/bibliotecar": {
-      "get": {
-        "description": "Retrieve records from BIBLIOTECAR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/BIBLIOTECAR_ITEM"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Create a new record on BIBLIOTECAR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/BIBLIOTECAR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/BIBLIOTECAR_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/bibliotecar/{id}": {
-      "delete": {
-        "description": "Remove a record from BIBLIOTECAR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/BIBLIOTECAR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from BIBLIOTECAR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/BIBLIOTECAR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on BIBLIOTECAR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/BIBLIOTECAR_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/BIBLIOTECAR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/BIBLIOTECAR_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/personal_achizitii": {
-      "get": {
-        "description": "Retrieve records from PERSONAL_ACHIZITII",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Create a new record on PERSONAL_ACHIZITII",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/personal_achizitii/{id}": {
-      "delete": {
-        "description": "Remove a record from PERSONAL_ACHIZITII",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from PERSONAL_ACHIZITII",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on PERSONAL_ACHIZITII",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/emite": {
-      "get": {
-        "description": "Retrieve records from EMITE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/EMITE_ITEM"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Create a new record on EMITE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/EMITE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/EMITE_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/emite/{id}": {
-      "delete": {
-        "description": "Remove a record from EMITE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/EMITE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from EMITE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/EMITE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on EMITE",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/EMITE_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/EMITE_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/EMITE_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/furnizor": {
-      "get": {
-        "description": "Retrieve records from FURNIZOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/FURNIZOR_ITEM"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Create a new record on FURNIZOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/FURNIZOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FURNIZOR_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/furnizor/{id}": {
-      "delete": {
-        "description": "Remove a record from FURNIZOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/FURNIZOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from FURNIZOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/FURNIZOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on FURNIZOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/FURNIZOR_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/FURNIZOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FURNIZOR_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/comanda": {
-      "get": {
-        "description": "Retrieve records from COMANDA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/COMANDA_ITEM"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Create a new record on COMANDA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/COMANDA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/COMANDA_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/comanda/{id}": {
-      "delete": {
-        "description": "Remove a record from COMANDA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/COMANDA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from COMANDA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/COMANDA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on COMANDA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/COMANDA_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/COMANDA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/COMANDA_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/formata_din": {
-      "get": {
-        "description": "Retrieve records from FORMATA_DIN",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/FORMATA_DIN_ITEM"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Create a new record on FORMATA_DIN",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/FORMATA_DIN_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FORMATA_DIN_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/formata_din/{id}": {
-      "delete": {
-        "description": "Remove a record from FORMATA_DIN",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/FORMATA_DIN_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from FORMATA_DIN",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/FORMATA_DIN_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on FORMATA_DIN",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/FORMATA_DIN_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/FORMATA_DIN_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FORMATA_DIN_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/donator": {
-      "get": {
-        "description": "Retrieve records from DONATOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/DONATOR_ITEM"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Create a new record on DONATOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/DONATOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/DONATOR_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/donator/{id}": {
-      "delete": {
-        "description": "Remove a record from DONATOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/DONATOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from DONATOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/DONATOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on DONATOR",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/DONATOR_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/DONATOR_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/DONATOR_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/doneaza": {
-      "get": {
-        "description": "Retrieve records from DONEAZA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/DONEAZA_ITEM"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Create a new record on DONEAZA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/DONEAZA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/DONEAZA_ITEM"
-            }
-          }
-        ]
-      }
-    },
-    "/doneaza/{id}": {
-      "delete": {
-        "description": "Remove a record from DONEAZA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted result.",
-            "schema": {
-              "$ref": "#/definitions/DONEAZA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "get": {
-        "description": "Retrieve a record from DONEAZA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The queried record.",
-            "schema": {
-              "$ref": "#/definitions/DONEAZA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          }
-        ]
-      },
-      "put": {
-        "description": "Create or update a record on DONEAZA",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "The successfully updated record.",
-            "schema": {
-              "$ref": "#/definitions/DONEAZA_ITEM"
-            }
-          },
-          "201": {
-            "description": "The successfully created record.",
-            "schema": {
-              "$ref": "#/definitions/DONEAZA_ITEM"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "implicit",
-            "pattern": "^[^/]+$"
-          },
-          {
-            "name": "payload",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/DONEAZA_ITEM"
-            }
-          }
-        ]
-      }
+      ]
     }
   },
+  "/carte/{id}": {
+    "delete": {
+      "description": "Remove a record from CARTE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "204": {
+          "description": "Deleted result.",
+          "schema": {
+            "$ref": "#/definitions/CARTE_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        }
+      ]
+    },
+    "get": {
+      "description": "Retrieve a record from CARTE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The queried record.",
+          "schema": {
+            "$ref": "#/definitions/CARTE_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        }
+      ]
+    },
+    "put": {
+      "description": "Create or update a record on CARTE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The successfully updated record.",
+          "schema": {
+            "$ref": "#/definitions/CARTE_ITEM"
+          }
+        },
+        "201": {
+          "description": "The successfully created record.",
+          "schema": {
+            "$ref": "#/definitions/CARTE_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        },
+        {
+          "name": "payload",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CARTE_ITEM"
+          }
+        }
+      ]
+    }
+  },
+  "/categorie": {
+    "get": {
+      "description": "Retrieve records from CATEGORIE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The queried record.",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/CATEGORIE_ITEM"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "description": "Create a new record on CATEGORIE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "201": {
+          "description": "The successfully created record.",
+          "schema": {
+            "$ref": "#/definitions/CATEGORIE_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "payload",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CATEGORIE_ITEM"
+          }
+        }
+      ]
+    }
+  },
+  "/categorie/{id}": {
+    "delete": {
+      "description": "Remove a record from CATEGORIE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "204": {
+          "description": "Deleted result.",
+          "schema": {
+            "$ref": "#/definitions/CATEGORIE_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        }
+      ]
+    },
+    "get": {
+      "description": "Retrieve a record from CATEGORIE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The queried record.",
+          "schema": {
+            "$ref": "#/definitions/CATEGORIE_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        }
+      ]
+    },
+    "put": {
+      "description": "Create or update a record on CATEGORIE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The successfully updated record.",
+          "schema": {
+            "$ref": "#/definitions/CATEGORIE_ITEM"
+          }
+        },
+        "201": {
+          "description": "The successfully created record.",
+          "schema": {
+            "$ref": "#/definitions/CATEGORIE_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        },
+        {
+          "name": "payload",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CATEGORIE_ITEM"
+          }
+        }
+      ]
+    }
+  },
+  "/legitimatie": {
+    "get": {
+      "description": "Retrieve records from LEGITIMATIE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The queried record.",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/LEGITIMATIE_ITEM"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "description": "Create a new record on LEGITIMATIE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "201": {
+          "description": "The successfully created record.",
+          "schema": {
+            "$ref": "#/definitions/LEGITIMATIE_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "payload",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/LEGITIMATIE_ITEM"
+          }
+        }
+      ]
+    }
+  },
+  "/legitimatie/{id}": {
+    "delete": {
+      "description": "Remove a record from LEGITIMATIE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "204": {
+          "description": "Deleted result.",
+          "schema": {
+            "$ref": "#/definitions/LEGITIMATIE_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        }
+      ]
+    },
+    "get": {
+      "description": "Retrieve a record from LEGITIMATIE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The queried record.",
+          "schema": {
+            "$ref": "#/definitions/LEGITIMATIE_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        }
+      ]
+    },
+    "put": {
+      "description": "Create or update a record on LEGITIMATIE",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The successfully updated record.",
+          "schema": {
+            "$ref": "#/definitions/LEGITIMATIE_ITEM"
+          }
+        },
+        "201": {
+          "description": "The successfully created record.",
+          "schema": {
+            "$ref": "#/definitions/LEGITIMATIE_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        },
+        {
+          "name": "payload",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/LEGITIMATIE_ITEM"
+          }
+        }
+      ]
+    }
+  },
+  "/cititor": {
+    "get": {
+      "description": "Retrieve records from CITITOR",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The queried record.",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/CITITOR_ITEM"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "description": "Create a new record on CITITOR",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "201": {
+          "description": "The successfully created record.",
+          "schema": {
+            "$ref": "#/definitions/CITITOR_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "payload",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CITITOR_ITEM"
+          }
+        }
+      ]
+    }
+  },
+  "/cititor/{id}": {
+    "delete": {
+      "description": "Remove a record from CITITOR",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "204": {
+          "description": "Deleted result.",
+          "schema": {
+            "$ref": "#/definitions/CITITOR_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        }
+      ]
+    },
+    "get": {
+      "description": "Retrieve a record from CITITOR",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The queried record.",
+          "schema": {
+            "$ref": "#/definitions/CITITOR_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        }
+      ]
+    },
+    "put": {
+      "description": "Create or update a record on CITITOR",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "The successfully updated record.",
+          "schema": {
+            "$ref": "#/definitions/CITITOR_ITEM"
+          }
+        },
+        "201": {
+          "description": "The successfully created record.",
+          "schema": {
+            "$ref": "#/definitions/CITITOR_ITEM"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "implicit",
+          "pattern": "^[^/]+$"
+        },
+        {
+          "name": "payload",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CITITOR_ITEM"
+          }
+        }
+      ]
+    }
+  },
+  "/imprumuta": {
+  "get": {
+    "description": "Retrieve records from IMPRUMUTA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/IMPRUMUTA_ITEM"
+        }
+        }
+      }
+      }
+    }
+    }
+  },
+  "post": {
+    "description": "Create a new record on IMPRUMUTA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/IMPRUMUTA_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/IMPRUMUTA_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/imprumuta/cartiImprumutateDe/{id}": {
+  "get": {
+    "description": "Retrieve records from IMPRUMUTA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/IMPRUMUTA_ITEM"
+        }
+        }
+      }
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  }
+  },
+  "/imprumuta/{id}": {
+  "delete": {
+    "description": "Remove a record from IMPRUMUTA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "204": {
+      "description": "Deleted result.",
+      "schema": {
+      "$ref": "#/definitions/IMPRUMUTA_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "get": {
+    "description": "Retrieve a record from IMPRUMUTA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "$ref": "#/definitions/IMPRUMUTA_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "put": {
+    "description": "Create or update a record on IMPRUMUTA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The successfully updated record.",
+      "schema": {
+      "$ref": "#/definitions/IMPRUMUTA_ITEM"
+      }
+    },
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/IMPRUMUTA_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    },
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/IMPRUMUTA_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/bibliotecar": {
+  "get": {
+    "description": "Retrieve records from BIBLIOTECAR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/BIBLIOTECAR_ITEM"
+        }
+        }
+      }
+      }
+    }
+    }
+  },
+  "post": {
+    "description": "Create a new record on BIBLIOTECAR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/BIBLIOTECAR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/BIBLIOTECAR_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/bibliotecar/{id}": {
+  "delete": {
+    "description": "Remove a record from BIBLIOTECAR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "204": {
+      "description": "Deleted result.",
+      "schema": {
+      "$ref": "#/definitions/BIBLIOTECAR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "get": {
+    "description": "Retrieve a record from BIBLIOTECAR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "$ref": "#/definitions/BIBLIOTECAR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "put": {
+    "description": "Create or update a record on BIBLIOTECAR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The successfully updated record.",
+      "schema": {
+      "$ref": "#/definitions/BIBLIOTECAR_ITEM"
+      }
+    },
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/BIBLIOTECAR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    },
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/BIBLIOTECAR_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/personal_achizitii": {
+  "get": {
+    "description": "Retrieve records from PERSONAL_ACHIZITII",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
+        }
+        }
+      }
+      }
+    }
+    }
+  },
+  "post": {
+    "description": "Create a new record on PERSONAL_ACHIZITII",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/personal_achizitii/{id}": {
+  "delete": {
+    "description": "Remove a record from PERSONAL_ACHIZITII",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "204": {
+      "description": "Deleted result.",
+      "schema": {
+      "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "get": {
+    "description": "Retrieve a record from PERSONAL_ACHIZITII",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "put": {
+    "description": "Create or update a record on PERSONAL_ACHIZITII",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The successfully updated record.",
+      "schema": {
+      "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
+      }
+    },
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    },
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/PERSONAL_ACHIZITII_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/emite": {
+  "get": {
+    "description": "Retrieve records from EMITE",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/EMITE_ITEM"
+        }
+        }
+      }
+      }
+    }
+    }
+  },
+  "post": {
+    "description": "Create a new record on EMITE",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/EMITE_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/EMITE_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/emite/{id}": {
+  "delete": {
+    "description": "Remove a record from EMITE",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "204": {
+      "description": "Deleted result.",
+      "schema": {
+      "$ref": "#/definitions/EMITE_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "get": {
+    "description": "Retrieve a record from EMITE",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "$ref": "#/definitions/EMITE_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "put": {
+    "description": "Create or update a record on EMITE",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The successfully updated record.",
+      "schema": {
+      "$ref": "#/definitions/EMITE_ITEM"
+      }
+    },
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/EMITE_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    },
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/EMITE_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/furnizor": {
+  "get": {
+    "description": "Retrieve records from FURNIZOR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/FURNIZOR_ITEM"
+        }
+        }
+      }
+      }
+    }
+    }
+  },
+  "post": {
+    "description": "Create a new record on FURNIZOR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/FURNIZOR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/FURNIZOR_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/furnizor/{id}": {
+  "delete": {
+    "description": "Remove a record from FURNIZOR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "204": {
+      "description": "Deleted result.",
+      "schema": {
+      "$ref": "#/definitions/FURNIZOR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "get": {
+    "description": "Retrieve a record from FURNIZOR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "$ref": "#/definitions/FURNIZOR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "put": {
+    "description": "Create or update a record on FURNIZOR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The successfully updated record.",
+      "schema": {
+      "$ref": "#/definitions/FURNIZOR_ITEM"
+      }
+    },
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/FURNIZOR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    },
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/FURNIZOR_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/comanda": {
+  "get": {
+    "description": "Retrieve records from COMANDA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/COMANDA_ITEM"
+        }
+        }
+      }
+      }
+    }
+    }
+  },
+  "post": {
+    "description": "Create a new record on COMANDA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/COMANDA_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/COMANDA_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/comanda/{id}": {
+  "delete": {
+    "description": "Remove a record from COMANDA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "204": {
+      "description": "Deleted result.",
+      "schema": {
+      "$ref": "#/definitions/COMANDA_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "get": {
+    "description": "Retrieve a record from COMANDA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "$ref": "#/definitions/COMANDA_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "put": {
+    "description": "Create or update a record on COMANDA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The successfully updated record.",
+      "schema": {
+      "$ref": "#/definitions/COMANDA_ITEM"
+      }
+    },
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/COMANDA_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    },
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/COMANDA_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/formata_din": {
+  "get": {
+    "description": "Retrieve records from FORMATA_DIN",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/FORMATA_DIN_ITEM"
+        }
+        }
+      }
+      }
+    }
+    }
+  },
+  "post": {
+    "description": "Create a new record on FORMATA_DIN",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/FORMATA_DIN_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/FORMATA_DIN_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/formata_din/{id}": {
+  "delete": {
+    "description": "Remove a record from FORMATA_DIN",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "204": {
+      "description": "Deleted result.",
+      "schema": {
+      "$ref": "#/definitions/FORMATA_DIN_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "get": {
+    "description": "Retrieve a record from FORMATA_DIN",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "$ref": "#/definitions/FORMATA_DIN_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "put": {
+    "description": "Create or update a record on FORMATA_DIN",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The successfully updated record.",
+      "schema": {
+      "$ref": "#/definitions/FORMATA_DIN_ITEM"
+      }
+    },
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/FORMATA_DIN_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    },
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/FORMATA_DIN_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/donator": {
+  "get": {
+    "description": "Retrieve records from DONATOR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/DONATOR_ITEM"
+        }
+        }
+      }
+      }
+    }
+    }
+  },
+  "post": {
+    "description": "Create a new record on DONATOR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/DONATOR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/DONATOR_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/donator/{id}": {
+  "delete": {
+    "description": "Remove a record from DONATOR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "204": {
+      "description": "Deleted result.",
+      "schema": {
+      "$ref": "#/definitions/DONATOR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "get": {
+    "description": "Retrieve a record from DONATOR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "$ref": "#/definitions/DONATOR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    }
+    ]
+  },
+  "put": {
+    "description": "Create or update a record on DONATOR",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The successfully updated record.",
+      "schema": {
+      "$ref": "#/definitions/DONATOR_ITEM"
+      }
+    },
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/DONATOR_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "implicit",
+      "pattern": "^[^/]+$"
+    },
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/DONATOR_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/doneaza": {
+  "get": {
+    "description": "Retrieve records from DONEAZA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "200": {
+      "description": "The queried record.",
+      "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/DONEAZA_ITEM"
+        }
+        }
+      }
+      }
+    }
+    }
+  },
+  "post": {
+    "description": "Create a new record on DONEAZA",
+    "produces": [
+    "application/json"
+    ],
+    "responses": {
+    "201": {
+      "description": "The successfully created record.",
+      "schema": {
+      "$ref": "#/definitions/DONEAZA_ITEM"
+      }
+    }
+    },
+    "parameters": [
+    {
+      "name": "payload",
+      "in": "body",
+      "required": true,
+      "schema": {
+      "$ref": "#/definitions/DONEAZA_ITEM"
+      }
+    }
+    ]
+  }
+  },
+  "/doneaza/{id}": {
+        "delete": {
+          "description": "Remove a record from DONEAZA",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "204": {
+              "description": "Deleted result.",
+              "schema": {
+                "$ref": "#/definitions/DONEAZA_ITEM"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "implicit",
+              "pattern": "^[^/]+$"
+            }
+          ]
+        },
+        "get": {
+          "description": "Retrieve a record from DONEAZA",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "The queried record.",
+              "schema": {
+                "$ref": "#/definitions/DONEAZA_ITEM"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "implicit",
+              "pattern": "^[^/]+$"
+            }
+          ]
+        },
+        "put": {
+          "description": "Create or update a record on DONEAZA",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "The successfully updated record.",
+              "schema": {
+                "$ref": "#/definitions/DONEAZA_ITEM"
+              }
+            },
+            "201": {
+              "description": "The successfully created record.",
+              "schema": {
+                "$ref": "#/definitions/DONEAZA_ITEM"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "implicit",
+              "pattern": "^[^/]+$"
+            },
+            {
+              "name": "payload",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/DONEAZA_ITEM"
+              }
+            }
+          ]
+        }
+      }
+    },
   "definitions": {
     "DATE": {
       "type": "string",
@@ -1947,236 +1981,235 @@
       }
     },
     "DONEAZA_ITEM": {
-      "properties": {
-        "cod_donator": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "cod_carte": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "data_donarii": {
-          "$ref": "#/definitions/DATE"
-        },
-        "nr_exemplare": {
-          "$ref": "#/definitions/NUMBER"
-        }
+    "properties": {
+      "cod_donator": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "cod_carte": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "data_donarii": {
+        "$ref": "#/definitions/DATE"
+      },
+      "nr_exemplare": {
+        "$ref": "#/definitions/NUMBER"
       }
-    },
-    "DONATOR_ITEM": {
-      "properties": {
-        "cod_donator": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "cod_tip": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "denumire": {
-          "$ref": "#/definitions/VARCHAR2"
-        }
+    }
+  },
+  "DONATOR_ITEM": {
+    "properties": {
+      "cod_donator": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "cod_tip": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "denumire": {
+        "$ref": "#/definitions/VARCHAR2"
       }
-    },
-    "FLOAT": {
-      "type": "number"
-    },
-    "FORMATA_DIN_ITEM": {
-      "properties": {
-        "cod_comanda": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "cod_carte": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "nr_exemplare": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "pret_unitar": {
-          "$ref": "#/definitions/FLOAT"
-        }
+    }
+  },
+  "FLOAT": {
+    "type": "number"
+  },
+  "FORMATA_DIN_ITEM": {
+    "properties": {
+      "cod_comanda": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "cod_carte": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "nr_exemplare": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "pret_unitar": {
+        "$ref": "#/definitions/FLOAT"
       }
-    },
-    "COMANDA_ITEM": {
-      "properties": {
-        "cod_comanda": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "cod_fz": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "cod_p_ac": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "data_plasare": {
-          "$ref": "#/definitions/DATE"
-        },
-        "anulata": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "total": {
-          "$ref": "#/definitions/FLOAT"
-        }
+    }
+  },
+  "COMANDA_ITEM": {
+    "properties": {
+      "cod_comanda": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "cod_fz": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "cod_p_ac": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "data_plasare": {
+        "$ref": "#/definitions/DATE"
+      },
+      "anulata": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "total": {
+        "$ref": "#/definitions/FLOAT"
       }
-    },
-    "FURNIZOR_ITEM": {
-      "properties": {
-        "cod_fz": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "den_fz": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "email_fz": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "cui": {
-          "$ref": "#/definitions/VARCHAR2"
-        }
+    }
+  },
+  "FURNIZOR_ITEM": {
+    "properties": {
+      "cod_fz": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "den_fz": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "email_fz": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "cui": {
+        "$ref": "#/definitions/VARCHAR2"
       }
-    },
-    "EMITE_ITEM": {
-      "properties": {
-        "serie_legitimatie": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "cod_bibliotecar": {
-          "$ref": "#/definitions/NUMBER"
-        }
+    }
+  },
+  "EMITE_ITEM": {
+    "properties": {
+      "serie_legitimatie": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "cod_bibliotecar": {
+        "$ref": "#/definitions/NUMBER"
       }
-    },
-    "PERSONAL_ACHIZITII_ITEM": {
-      "properties": {
-        "cod_p_ac": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "nume": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "prenume": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "gen": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "data_n": {
-          "$ref": "#/definitions/DATE"
-        },
-        "str_nr": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "localitate": {
-          "$ref": "#/definitions/VARCHAR2"
-        }
+    }
+  },
+  "PERSONAL_ACHIZITII_ITEM": {
+    "properties": {
+      "cod_p_ac": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "nume": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "prenume": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "gen": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "data_n": {
+        "$ref": "#/definitions/DATE"
+      },
+      "str_nr": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "localitate": {
+        "$ref": "#/definitions/VARCHAR2"
       }
-    },
-    "BIBLIOTECAR_ITEM": {
-      "properties": {
-        "cod_bibliotecar": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "nume": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "prenume": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "gen": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "data_n": {
-          "$ref": "#/definitions/DATE"
-        },
-        "str_nr": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "localitate": {
-          "$ref": "#/definitions/VARCHAR2"
-        }
+    }
+  },
+  "BIBLIOTECAR_ITEM": {
+    "properties": {
+      "cod_bibliotecar": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "nume": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "prenume": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "gen": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "data_n": {
+        "$ref": "#/definitions/DATE"
+      },
+      "str_nr": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "localitate": {
+        "$ref": "#/definitions/VARCHAR2"
       }
-    },
-    "IMPRUMUTA_ITEM": {
-      "properties": {
-        "cod_cititor": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "cod_carte": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "data_imprumut": {
-          "$ref": "#/definitions/DATE"
-        },
-        "termen_limita": {
-          "$ref": "#/definitions/DATE"
-        },
-        "data_restituire": {
-          "$ref": "#/definitions/DATE"
-        }
+    }
+  },
+  "IMPRUMUTA_ITEM": {
+    "properties": {
+      "cod_cititor": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "cod_carte": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "data_imprumut": {
+        "$ref": "#/definitions/DATE"
+      },
+      "termen_limita": {
+        "$ref": "#/definitions/DATE"
+      },
+      "data_restituire": {
+        "$ref": "#/definitions/DATE"
       }
-    },
-    "CATEGORIE_ITEM": {
-      "properties": {
-        "cod_categorie": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "denumire": {
-          "$ref": "#/definitions/VARCHAR2"
-        }
+    }
+  },
+  "CATEGORIE_ITEM": {
+    "properties": {
+      "cod_categorie": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "denumire": {
+        "$ref": "#/definitions/VARCHAR2"
       }
-    },
-    "CARTE_ITEM": {
-      "properties": {
-        "cod_carte": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "cod_subcategorie": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "titlu": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "nr_exemplare": {
-          "$ref": "#/definitions/NUMBER"
-        }
+    }
+  },
+  "CARTE_ITEM": {
+    "properties": {
+      "cod_carte": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "cod_subcategorie": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "titlu": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "nr_exemplare": {
+        "$ref": "#/definitions/NUMBER"
       }
-    },
-    "LEGITIMATIE_ITEM": {
-      "properties": {
-        "serie_legitimatie": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "data_expirare": {
-          "$ref": "#/definitions/DATE"
-        }
+    }
+  },
+  "LEGITIMATIE_ITEM": {
+    "properties": {
+      "serie_legitimatie": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "data_expirare": {
+        "$ref": "#/definitions/DATE"
       }
-    },
-    "CITITOR_ITEM": {
-      "properties": {
-        "cod_cititor": {
-          "$ref": "#/definitions/NUMBER"
-        },
-        "serie_legitimatie": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "nume": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "prenume": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "gen": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "data_n": {
-          "$ref": "#/definitions/DATE"
-        },
-        "str_nr": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "localitate": {
-          "$ref": "#/definitions/VARCHAR2"
-        },
-        "email": {
-          "$ref": "#/definitions/VARCHAR2"
-        }
+    }
+  },
+  "CITITOR_ITEM": {
+    "properties": {
+      "cod_cititor": {
+        "$ref": "#/definitions/NUMBER"
+      },
+      "serie_legitimatie": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "nume": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "prenume": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "gen": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "data_n": {
+        "$ref": "#/definitions/DATE"
+      },
+      "str_nr": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "localitate": {
+        "$ref": "#/definitions/VARCHAR2"
+      },
+      "email": {
+        "$ref": "#/definitions/VARCHAR2"
       }
     }
   }
-}
+  }}
