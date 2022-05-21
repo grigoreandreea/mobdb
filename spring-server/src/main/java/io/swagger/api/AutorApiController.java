@@ -102,8 +102,6 @@ public class AutorApiController implements AutorApi {
         autorRepository = new AutorRepository(config.getJdbcTemplate());
         if (accept != null && accept.contains("application/json")) {
             try {
-                System.out.println("Autor is:");
-                System.out.println(payload);
                 return new ResponseEntity<AUTORITEM>(autorRepository.updateAuthor(id, payload), HttpStatus.OK);
             } catch (Exception e) {
                 log.error("Couldn't serialize response for content type application/json", e);
