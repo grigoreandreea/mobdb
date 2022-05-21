@@ -52,6 +52,11 @@ export class DefaultService {
             this.configuration = configuration;
             this.basePath = basePath || configuration.basePath || this.basePath;
         }
+
+        const databaseName = localStorage.getItem('database-name');
+        if (databaseName) {
+          this.basePath = `http://127.0.0.1:8080/ords/${databaseName}`
+        }
     }
 
     /**

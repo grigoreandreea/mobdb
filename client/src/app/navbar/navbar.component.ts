@@ -14,6 +14,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {}
 
+  public goToSelectDatabase() {
+    this.router.navigate(['/select-database']);
+  }
+
   public goToBooks() {
     this.router.navigate(['/books']);
   }

@@ -1,0 +1,22 @@
+.wrapper-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .first-title {
+    margin: 24px auto 24px auto;
+  }
+
+  .wrapper-buttons-content {
+    margin: auto;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+
+    button {
+      padding: 12px 20px;
+      margin: 12px;
+      border-radius: 8px;
+    }
+  }
+}

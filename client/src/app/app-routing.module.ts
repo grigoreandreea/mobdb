@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {BookComponent} from "./book/book.component";
 import {AutorComponent} from "./autor/autor.component";
 import {CititorComponent} from "./cititor/cititor.component";
+import {SelectDatabaseComponent} from "./select-database/select-database.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,9 @@ const routes: Routes = [
   },
   {
     path: 'cititori', component: CititorComponent
+  },
+  {
+    path: 'select-database', component: SelectDatabaseComponent
   }
 ];
 
